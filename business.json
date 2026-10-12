@@ -1,0 +1,40 @@
+{
+  "_note": "Every fact about the business lives here. Source: intake issue labsuncut/ops#3. Empty means we don't know it yet.",
+  "name": "FUEL Food Truck",
+  "tagline": "Burgers, shakes and coffee from the truck in Abdoun",
+  "category": "Burger food truck",
+  "phone": "+962 79 262 0002",
+  "email": "",
+  "address": {
+    "street": "",
+    "city": "Abdoun, Amman",
+    "region": "",
+    "postal": "",
+    "country": "Jordan",
+    "plus_code": "WVPF+66 Amman"
+  },
+  "hours": [
+    { "days": "Every day", "open": "7:00 AM", "close": "1:00 AM" }
+  ],
+  "services": [
+    { "name": "Menu sections", "description": "Burgers, Combos, Sides, Shakes, Refreshers, Coffee, Beverages" },
+    { "name": "Delivery", "description": "Anywhere in Amman, or pickup, through the FUEL app. Cash or card. App-only deals and loyalty points." },
+    { "name": "Bedouin Soft Serve", "description": "Soft serve with Lazzagiyat, a Bedouin dessert (Ramadan 2026 concept)." }
+  ],
+  "best_seller": "Double Classic (Careem roundup)",
+  "about": "",
+  "reviews": [],
+  "colors": {
+    "brand": "#f91814",
+    "accent": "#ffd54a",
+    "_note": "Provisional. Confirm against FUEL's real logo."
+  },
+  "links": {
+    "google": "",
+    "instagram": "https://www.instagram.com/fuel_foodtruck/",
+    "facebook": "",
+    "order": "https://bitesnbags.com/place/fuel-foodtruck",
+    "android_app": "https://play.google.com/store/apps/details?id=com.bitesnbags.fuel"
+  },
+  "domain": ""
+}

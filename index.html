@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FUEL Food Truck | Burgers in Abdoun, Amman</title>
+  <meta name="description" content="FUEL is a burger food truck in Abdoun, Amman. Burgers, combos, sides, shakes and coffee, open every day 7 AM to 1 AM. Order on the FUEL app for delivery across Amman.">
+  <meta name="theme-color" content="#f91814">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FUEL Food Truck · Amman">
+  <meta property="og:description" content="Burgers from the truck in Abdoun. Built for the craving.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&family=Lalezar&family=Modak&family=Mouse+Memoirs&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>
+    // Pick the language before anything paints, so there is no flash of the wrong one.
+    (function () { var l = 'en'; try { l = localStorage.getItem('fuel-lang') || 'en'; } catch (e) {}
+      if (l === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; } })();
+    document.documentElement.classList.add('js');
+  </script>
+  <!-- Facts for Google. Keep in sync with business.json. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FastFoodRestaurant",
+    "name": "FUEL Food Truck",
+    "telephone": "+962792620002",
+    "servesCuisine": ["Burgers"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Abdoun, Amman", "addressCountry": "JO" },
+    "openingHours": "Mo-Su 07:00-01:00",
+    "hasMenu": "https://bitesnbags.com/place/fuel-foodtruck",
+    "sameAs": ["https://www.instagram.com/fuel_foodtruck/", "https://play.google.com/store/apps/details?id=com.bitesnbags.fuel"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main" data-t="skip">Skip to content</a>
+
+  <!-- LOADER: the letters F-U-E-L drop in and stack while the kitchen lines change, then three curved curtains lift.
+       PLACEHOLDER: CRAV stacks a cartoon burger here. Swap the letters for a drawing of FUEL's own burger once we have their photos. -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="curtain" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c3" d="M -1 -1 L 101 -1 L 101 101 Q 50 101 -1 101 Z"/></svg>
+    <svg class="curtain" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c2" d="M -1 -1 L 101 -1 L 101 101 Q 50 101 -1 101 Z"/></svg>
+    <svg class="curtain" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c1" d="M -1 -1 L 101 -1 L 101 101 Q 50 101 -1 101 Z"/></svg>
+    <div class="loader-stage" id="loader-stage">
+      <div class="loader-stack" id="loader-stack">
+        <span class="ls">F</span><span class="ls">U</span><span class="ls">E</span><span class="ls">L</span>
+        <svg class="ls ls-bolt" viewBox="0 0 60 100"><path d="M36 0 4 58h22L18 100l38-62H33L44 0z"/></svg>
+      </div>
+      <div class="sparks" id="sparks"></div>
+    </div>
+    <p class="loader-text" id="loader-text" data-t="load_1">Firing up the flat-top…</p>
+    <div class="loader-bar"><i id="loader-bar"></i></div>
+  </div>
+
+  <header class="header" id="header">
+    <a class="brand" href="#top" aria-label="FUEL home">
+      <!-- PROVISIONAL wordmark: replace with FUEL's real logo file when the owner sends it -->
+      FUEL<svg viewBox="0 0 60 100" aria-hidden="true"><path d="M36 0 4 58h22L18 100l38-62H33L44 0z"/></svg>
+    </a>
+    <div class="header-r">
+      <button class="chip chip-line" id="lang" type="button" data-t="lang_switch">عربي</button>
+      <a class="chip chip-red" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order_short">Order</a>
+      <button class="chip chip-line" id="menu-open" type="button" aria-expanded="false" aria-controls="overlay"><span data-t="menu_btn">Menu</span> <i class="ham"></i></button>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" hidden>
+    <button class="chip chip-cream overlay-close" id="menu-close" type="button" data-t="close_btn">Close</button>
+    <nav class="overlay-nav" aria-label="Main">
+      <a href="#top" data-t="nav_home">Home</a>
+      <a href="#menu" data-t="nav_menu">Menu</a>
+      <a href="#way" data-t="nav_way">The FUEL way</a>
+      <a href="#delivery" data-t="nav_delivery">Delivery</a>
+      <a href="#visit" data-t="nav_visit">Visit</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <!-- HERO: giant headline, two rotated stickers, the burger pops up in front, the wordmark sits under it -->
+    <section class="hero" id="top">
+      <div class="hero-head">
+        <h1 class="hero-title"><span class="split" data-t="hero_title">THE BURGER TRUCK</span></h1>
+        <p class="sticker st-mustard hero-st1" data-t="hero_st1">Abdoun
+Amman</p>
+        <p class="sticker st-mustard hero-st2" data-t="hero_st2">Open till
+1 AM</p>
+      </div>
+      <div class="hero-burger" id="hero-burger">
+        <!-- PLACEHOLDER image: FUEL's Double Classic, cut out on a transparent background -->
+        <figure class="ph ph-round"><span data-t="ph">Fuel photo goes here</span><small>Double Classic</small></figure>
+      </div>
+      <p class="hero-word" id="hero-word" data-t="hero_word">FUEL</p>
+      <div class="hero-copy">
+        <p class="reveal" data-t="hero_l">Burgers, shakes and coffee from the truck in Abdoun. Open every day, 7 AM to 1 AM.</p>
+        <p class="reveal" data-t="hero_r">Order on the FUEL app and we bring it hot, anywhere in Amman.</p>
+      </div>
+    </section>
+
+    <!-- STATEMENT: sticker, two-line headline, three tilted cards that lean towards the mouse -->
+    <section class="statement" id="menu-cards">
+      <p class="sticker st-red pop" data-t="st_tag">From the truck</p>
+      <h2 class="big red"><span class="split" data-t="st_title">HOT OFF
+THE TRUCK</span></h2>
+      <p class="lead reveal" data-t="st_copy">Street food with a full tank. Burgers, combos, sides and shakes, handed over hot from the truck in Abdoun.</p>
+      <a class="blob" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order">Order now</a>
+      <div class="cards" id="cards">
+        <a class="card" href="https://bitesnbags.com/place/fuel-foodtruck"><figure class="ph"><span data-t="ph">Fuel photo goes here</span><small>Burger</small></figure><b data-t="c_burgers">Burgers</b></a><!-- PLACEHOLDER image -->
+        <a class="card" href="https://bitesnbags.com/place/fuel-foodtruck"><figure class="ph"><span data-t="ph">Fuel photo goes here</span><small>Fries</small></figure><b data-t="c_sides">Sides</b></a><!-- PLACEHOLDER image -->
+        <a class="card" href="https://bitesnbags.com/place/fuel-foodtruck"><figure class="ph"><span data-t="ph">Fuel photo goes here</span><small>Shake</small></figure><b data-t="c_shakes">Shakes</b></a><!-- PLACEHOLDER image -->
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (red): wave edge, headline, the burger grows as you scroll, facts at both sides -->
+    <section class="experience red-bg" id="way">
+      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <p class="sticker st-mustard pop" data-t="exp_tag">The FUEL way</p>
+      <h2 class="big cream"><span class="split" data-t="exp_title">MADE FOR
+THE CRAVING</span></h2>
+      <div class="exp-stage">
+        <div class="exp-burger" id="exp-burger">
+          <!-- PLACEHOLDER image: a second FUEL burger, cut out -->
+          <figure class="ph ph-round ph-dark"><span data-t="ph">Fuel photo goes here</span><small>Burger, cut out</small></figure>
+        </div>
+        <ul class="exp-facts exp-l"><li data-t="exp_l1">7 AM to 1 AM</li><li data-t="exp_l2">Every day</li><li data-t="exp_l3">Abdoun, Amman</li></ul>
+        <ul class="exp-facts exp-r"><li data-t="exp_r1">All of Amman</li><li data-t="exp_r2">Delivery on the app</li><li data-t="exp_r3">Or pick up at the truck</li></ul>
+      </div>
+    </section>
+
+    <!-- FULL-BLEED: wavy top and bottom, the picture zooms as you scroll. This is where the hero video goes. -->
+    <section class="full" id="full">
+      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <div class="full-media" id="full-media">
+        <!-- PLACEHOLDER video: FUEL burger close-up (Higgsfield, after approval) or the owner's own footage -->
+        <figure class="ph ph-fill"><span data-t="ph">Fuel photo goes here</span><small>Close-up of a burger in hand, or the hero video</small></figure>
+      </div>
+      <h2 class="full-title"><span class="split" data-t="full_title">BUILT FOR
+THE CRAVING.</span></h2>
+    </section>
+
+    <!-- MENU (cream): wave edge, sticker, headline, FUEL's real menu sections -->
+    <section class="menu" id="menu">
+      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <p class="sticker st-red pop" data-t="menu_tag">The menu</p>
+      <h2 class="big red"><span class="split" data-t="menu_title">PICK YOUR
+FUEL</span></h2>
+      <ul class="menu-list" id="menu-list">
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_burgers">Burgers</span><i>01</i></a></li>
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_combos">Combos</span><i>02</i></a></li>
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_sides">Sides</span><i>03</i></a></li>
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_shakes">Shakes</span><i>04</i></a></li>
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_refreshers">Refreshers</span><i>05</i></a></li>
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_coffee">Coffee</span><i>06</i></a></li>
+        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_bev">Beverages</span><i>07</i></a></li>
+      </ul>
+      <p class="menu-note" data-t="menu_note">Full menu and prices are in the FUEL app.</p>
+      <a class="bed" href="https://7hillsjo.com/eat-drink/fuel-your-go-burger-food-truck-serves-bold-new-bedouin-inspired-concept">
+        <p class="sticker st-mustard" data-t="bed_tag">Ramadan 2026</p>
+        <h3 data-t="bed_title">Bedouin Soft Serve</h3>
+        <p data-t="bed_copy">Soft serve meets Lazzagiyat, the Bedouin sweet. Launched with a film shot in Wadi Rum.</p>
+        <span class="bed-cta"><span data-t="bed_cta">Read the story</span> →</span>
+      </a>
+    </section>
+
+    <!-- DELIVERY (yellow): a dashed route snakes down the section and the FUEL bolt rides it as you scroll -->
+    <section class="delivery" id="delivery">
+      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <div class="del-head">
+        <p class="sticker st-red pop" data-t="del_tag">Delivery</p>
+        <h2 class="big white"><span class="split" data-t="del_title">HOT ANYWHERE
+IN AMMAN</span></h2>
+        <p class="lead reveal" data-t="del_copy">From the truck in Abdoun to your door. Order on the FUEL app or on the web.</p>
+      </div>
+      <div class="route" id="route">
+        <svg class="route-svg" id="route-svg" aria-hidden="true"><path id="route-path"/></svg>
+        <svg class="rider" id="rider" viewBox="0 0 60 100" aria-hidden="true"><path d="M36 0 4 58h22L18 100l38-62H33L44 0z"/></svg>
+        <ol class="stops">
+          <li class="stop"><p class="sticker st-red">1</p><h3 data-t="s1_t">Order</h3><p data-t="s1_d">On the FUEL app or on the web.</p></li>
+          <li class="stop"><p class="sticker st-red">2</p><h3 data-t="s2_t">Track it</h3><p data-t="s2_d">Follow your driver on the map.</p></li>
+          <li class="stop"><p class="sticker st-red">3</p><h3 data-t="s3_t">Pay your way</h3><p data-t="s3_d">Cash or card.</p></li>
+          <li class="stop"><p class="sticker st-red">4</p><h3 data-t="s4_t">Collect points</h3><p data-t="s4_d">App-only deals and points on every order.</p></li>
+        </ol>
+      </div>
+      <div class="ctas">
+        <a class="blob" href="https://play.google.com/store/apps/details?id=com.bitesnbags.fuel" data-t="get_app">Get the app</a>
+        <a class="blob blob-line" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order_web">Order on the web</a>
+      </div>
+    </section>
+
+    <!-- VISIT (cream): sticker, headline, open-now badge, the map card tilted like a photo -->
+    <section class="visit" id="visit">
+      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <div class="visit-copy">
+        <p class="sticker st-red pop" data-t="visit_tag">Visit the truck</p>
+        <h2 class="big red"><span class="split" data-t="visit_title">COME SAY
+HI</span></h2>
+        <p class="lead reveal" data-t="visit_copy">Find the truck in Abdoun, Amman. Every day, 7 AM to 1 AM.</p>
+        <p class="open" id="open"><i></i><span>&nbsp;</span></p>
+        <dl class="visit-list">
+          <div><dt data-t="v_phone">Phone</dt><dd><a href="tel:+962792620002" dir="ltr">+962 79 262 0002</a></dd></div>
+          <div><dt data-t="v_ig">Instagram</dt><dd><a href="https://www.instagram.com/fuel_foodtruck/" dir="ltr">@fuel_foodtruck</a></dd></div>
+        </dl>
+        <div class="ctas">
+          <a class="blob" href="https://www.google.com/maps/search/?api=1&amp;query=Fuel+Food+Truck+Abdoun+Amman" data-t="directions">Directions</a>
+          <a class="blob blob-line" href="tel:+962792620002" data-t="call">Call the truck</a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe title="Map to FUEL Food Truck in Abdoun" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Fuel+Food+Truck+Abdoun+Amman&amp;output=embed"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: links, a rule that draws itself, the giant wordmark with bolts tossed up and falling behind it -->
+  <footer class="footer" id="footer">
+    <div class="foot-top">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="#top" data-t="nav_home">Home</a>
+        <a href="#menu" data-t="nav_menu">Menu</a>
+        <a href="https://www.instagram.com/fuel_foodtruck/">Instagram</a>
+        <a href="tel:+962792620002" data-t="call_short">Call</a>
+      </nav>
+      <p class="foot-copy">© <span id="year">2026</span> FUEL Food Truck · <span data-t="foot_small">Concept website preview</span></p>
+    </div>
+    <div class="foot-rule"><i id="foot-rule"></i></div>
+    <p class="foot-line" data-t="foot_line">Burgers · Shakes · Coffee · Abdoun, Amman · Open till 1 AM</p>
+    <div class="foot-stage" id="foot-stage">
+      <!-- PLACEHOLDER: CRAV juggles ingredient cut-outs here. These are FUEL bolts until we have their food photos. -->
+      <p class="foot-word" data-t="hero_word">FUEL</p>
+    </div>
+  </footer>
+
+  <!-- Phone bar -->
+  <div class="mbar" id="mbar">
+    <a href="tel:+962792620002" data-t="call_short">Call</a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Fuel+Food+Truck+Abdoun+Amman" data-t="directions">Directions</a>
+    <a class="mbar-main" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order">Order now</a>
+  </div>
+
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/vendor/SplitText.min.js"></script>
+  <script src="assets/js/vendor/MotionPathPlugin.min.js"></script>
+  <script src="assets/js/vendor/lenis.min.js"></script>
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
