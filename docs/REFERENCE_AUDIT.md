@@ -26,25 +26,22 @@ We copy behaviour and timing only. FUEL's code, words and art are our own.
 | Footer | Links and © line, a rule that draws itself (scaleX 0.9 s power3.out at top 92%), then a giant Modak "CRAV" with ingredients tossed up and falling behind and in front of it in a loop |
 | Stickers | Pop in once at "top 95%" |
 
-## FUEL build: verified vs approximated
+## FUEL build v3 (rebrand, 2026-10-13): what we kept from CRAV
 
-| FUEL effect | Status |
+FUEL's look is now its own (black, red, chrome). We kept CRAV's motion timings:
+
+| FUEL effect | CRAV source |
 | --- | --- |
-| Fonts, palette, white-outlined type | **Verified** |
-| Loader timing, squash, status lines, progress bar, sparks, hop, three curved curtains | **Verified** timing. FUEL stacks its letters F-U-E-L-⚡ instead of a burger until we can draw FUEL's own burger |
-| Header layout | **Verified** |
-| Hero layout, sticker angles, burger pop-in and float | **Verified**. Headline letter rise is **approximated** |
-| Tilted cards that react to the mouse | Layout **verified**; the inertia feel is **approximated** |
-| Wave edges: wobble and scroll stretch | **Verified** settings; the exact wave shape is ours |
-| Experience burger growing on scroll | **Approximated** |
-| Full-bleed picture zoom | **Approximated** (CRAV's photo is static between waves) |
-| Menu list and Bedouin card | **FUEL-only** (CRAV has a separate menu page) |
-| Delivery route with a rider on a dashed path | **Verified** technique (MotionPath, auto-rotate, scrub); a bolt instead of a plane, app steps instead of cities |
-| Visit section | Takes CRAV's "Feel it" slot; layout **approximated** |
-| Footer rule, giant wordmark, juggling loop | **Verified** rule timing and juggling behaviour; bolts instead of ingredients until we have FUEL's food |
+| Loader curtains (3 curved curtains, 0.12 s apart, 0.8 s corners, 1.1 s middle) | **Verified** timing. Start lights replace CRAV's burger stack |
+| Hero photo pop-in (scale 0.5 → 1, 1.5 s back.out(1.5)) and ±15 px float | **Verified** |
+| Tilted cards that lean with mouse speed | Layout **verified**, inertia **approximated** |
+| Section edges stretch on scroll (scaleY 1.5, top 80% → top 20%; 1.2 on phones) | **Verified** settings; edges are slanted instead of wavy |
+| Drink grows on scroll (CRAV's experience burger) | **Approximated** |
+| Race Mode bolt on a track | Same idea as CRAV's plane on a dashed path; straight track instead of a motion path |
+| Footer rule (scaleX 0.9 s power3.out at top 92%) and juggling loop | **Verified**; FUEL bolts instead of ingredients |
+| Speed streaks, Fiesta colour burst, confetti, papel picado | **FUEL-only** |
 
 ## Not done on purpose
 
-- **No drawings or images of food.** The team's rule: every burger drawing must match FUEL's real burgers. Dashed "Fuel photo goes here" spots hold their place until FUEL's photos arrive.
-- No mascot stickers or cartoon gloves yet. Those are CRAV's characters, so FUEL needs its own.
+- No invented food drawings. Every food picture is FUEL's own (from their Instagram).
 - No cookie banner (we use no cookies or trackers).

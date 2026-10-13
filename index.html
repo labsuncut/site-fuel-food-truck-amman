@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>FUEL Food Truck | Burgers in Abdoun, Amman</title>
-  <meta name="description" content="FUEL is a burger food truck in Abdoun, Amman. Burgers, combos, sides, shakes and coffee, open every day 7 AM to 1 AM. Order on the FUEL app for delivery across Amman.">
-  <meta name="theme-color" content="#f91814">
+  <title>FUEL | Your foodie pit stop in Amman</title>
+  <meta name="description" content="FUEL is a burger container in Amman. Double Classic, Animal Fries, Mango Coco and the new Fiesta menu. Open daily from 11 AM, till 1 AM (2 AM on Fri and Sat). Order on the FUEL app.">
+  <meta name="theme-color" content="#0b0b0c">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="FUEL Food Truck · Amman">
-  <meta property="og:description" content="Burgers from the truck in Abdoun. Built for the craving.">
+  <meta property="og:title" content="FUEL · Your foodie pit stop">
+  <meta property="og:description" content="Eat. Drive. Repeat! Burgers, fries, shakes and coffee in Amman.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&family=Lalezar&family=Modak&family=Mouse+Memoirs&display=swap" rel="stylesheet">
+  <!-- Saira Black Italic is the free stand-in for the logo's font (Pace Extra Bold Slanted, a paid font). -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@1,50..125,700..900&family=Space+Mono:wght@400;700&family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>
     // Pick the language before anything paints, so there is no flash of the wrong one.
@@ -26,219 +27,255 @@
     "@context": "https://schema.org",
     "@type": "FastFoodRestaurant",
     "name": "FUEL Food Truck",
+    "slogan": "Eat. Drive. Repeat!",
     "telephone": "+962792620002",
-    "servesCuisine": ["Burgers"],
+    "servesCuisine": ["Burgers", "Mexican"],
+    "priceRange": "JD 1.50–10.00",
     "address": { "@type": "PostalAddress", "addressLocality": "Abdoun, Amman", "addressCountry": "JO" },
-    "openingHours": "Mo-Su 07:00-01:00",
+    "openingHours": ["Su-Th 11:00-01:00", "Fr-Sa 11:00-02:00"],
     "hasMenu": "https://bitesnbags.com/place/fuel-foodtruck",
-    "sameAs": ["https://www.instagram.com/fuel_foodtruck/", "https://play.google.com/store/apps/details?id=com.bitesnbags.fuel"]
+    "sameAs": ["https://www.instagram.com/fuel_foodtruck/"]
   }
   </script>
 </head>
 <body>
+  <!-- FUEL's logo, traced from their brand pack. Used everywhere with <use href="#logo">. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo" viewBox="0 0 2740 873"><path fill="currentColor" fill-rule="evenodd" d="M8 868C6 867 4 864 4 862C4 861 9 851 15 840C24 822 36 797 47 772C51 764 66 733 91 681C97 670 104 656 107 649C110 642 118 625 125 611C132 597 140 580 143 573C146 565 153 553 157 544C161 535 166 525 168 520C183 490 204 448 206 445C207 444 208 441 209 440L210 437L208 435L206 433L129 432L51 432L49 429L47 427L47 424C47 422 48 417 50 414C52 411 58 399 64 387C76 364 77 362 82 360L85 359L164 359L243 359L246 357C247 356 250 353 252 349C256 338 275 301 278 295C282 288 292 268 315 223C329 195 343 168 346 162C354 147 360 136 367 122C370 115 374 109 374 108C375 106 384 87 396 65C418 22 421 17 425 15C426 15 522 15 655 15L882 15L885 16C886 17 887 19 888 21L888 25L886 28C886 30 883 33 882 35C879 39 870 56 866 67C863 75 860 79 856 81L854 83L772 83L691 84L689 85C686 87 684 91 676 108C674 113 667 128 660 142C654 155 648 168 647 169C647 170 644 178 640 186C636 193 632 202 630 206C629 209 624 219 620 228C616 237 612 245 612 245C612 246 608 255 602 266C592 286 582 309 576 323C572 333 568 341 564 347C560 352 560 355 563 357L566 359L779 359L992 359L994 360C999 364 999 368 993 378C991 380 988 385 987 388C986 391 982 400 979 408C975 415 970 427 967 433C965 439 961 447 960 450C958 453 956 458 955 461C954 464 950 473 946 480C943 487 938 499 935 506C932 514 926 525 923 532C920 540 913 554 908 565C904 576 896 593 892 602C887 612 880 630 875 640C870 652 863 667 860 675C852 691 846 706 840 720C838 725 834 735 831 742C828 748 823 758 821 764C819 770 815 777 813 780C811 783 809 787 809 789L809 792L812 793L814 794L878 794L942 794L944 792L947 790L950 780C952 776 956 768 958 764C960 759 963 752 965 747C968 742 972 733 975 726C978 720 982 709 984 703C989 690 999 668 1009 644C1014 636 1020 622 1023 615C1026 608 1032 594 1036 586C1039 577 1043 567 1045 563C1047 559 1051 548 1056 538C1066 516 1097 443 1097 442C1097 441 1108 416 1117 400C1122 389 1127 378 1129 374C1132 366 1133 363 1137 361L1140 360L1170 359C1186 359 1254 359 1320 359L1441 359L1443 360C1447 362 1447 370 1442 378C1440 381 1437 386 1436 390C1431 402 1427 412 1425 417C1423 419 1422 423 1422 424C1421 427 1414 441 1409 452C1404 462 1391 491 1388 500C1386 503 1383 511 1380 517C1376 528 1371 537 1364 554C1362 559 1358 567 1357 572C1355 577 1351 585 1348 591C1342 605 1338 614 1331 632C1324 648 1317 663 1311 674C1307 683 1301 697 1296 710C1293 717 1289 725 1288 729C1281 743 1278 751 1275 758C1274 762 1271 770 1268 776C1265 782 1262 790 1261 792C1260 795 1256 804 1252 812C1243 831 1237 843 1236 849C1234 856 1229 864 1226 866L1223 868L906 868C717 868 588 868 587 867C584 865 581 861 579 856C578 853 575 844 572 836C568 829 564 819 563 814C556 794 554 789 548 775C545 767 542 758 540 754C539 751 536 743 533 737C530 731 527 725 527 724C527 722 530 716 533 710C536 703 540 695 541 692C544 686 546 679 555 659C558 654 565 639 571 626C588 590 596 573 596 571C596 571 600 563 604 554C612 536 627 505 629 498C631 494 636 482 646 460C649 454 653 446 654 444C657 440 658 436 655 434L654 433L595 432C563 432 535 433 532 433L528 434L525 437C522 439 519 445 511 465C509 469 503 482 498 494C492 506 485 521 482 528C479 534 474 545 470 552C467 559 463 567 462 570C461 573 459 576 459 577C458 579 456 582 455 585C454 588 449 598 445 607C436 625 426 646 417 664C402 696 399 702 399 703C399 703 390 723 383 738C379 747 375 755 374 758C373 760 371 764 370 767C367 774 359 792 357 796C357 798 339 835 329 856C326 861 323 865 322 866L320 868L165 868L10 869L8 868ZM1642 868L1415 868L1413 866C1408 861 1399 840 1387 806C1385 801 1382 792 1379 786C1376 779 1370 767 1367 760C1364 752 1360 743 1359 740L1356 736L1356 731L1356 726L1361 716C1364 709 1368 701 1369 697C1371 693 1375 684 1378 677C1382 669 1385 662 1385 661C1386 660 1387 656 1389 652C1394 643 1399 630 1401 623C1403 619 1407 611 1410 604C1413 596 1417 588 1419 584C1420 581 1423 573 1426 567C1429 561 1432 553 1433 550C1434 548 1436 543 1438 540C1439 538 1442 533 1443 529C1445 525 1448 517 1451 511C1454 505 1458 496 1460 491C1466 476 1470 467 1474 456C1476 451 1480 442 1482 438C1484 433 1486 427 1487 426C1488 424 1492 415 1503 392C1505 388 1508 381 1510 375C1513 369 1516 363 1518 362L1521 359L1524 359C1554 359 2252 358 2259 358L2269 358L2271 356C2274 352 2276 348 2305 278C2309 267 2314 254 2316 250C2318 247 2321 238 2325 230C2328 223 2332 212 2335 206C2340 193 2349 174 2357 155C2360 148 2365 136 2368 128C2371 121 2375 112 2376 110C2378 106 2382 97 2398 60C2402 50 2407 38 2409 34C2411 31 2414 24 2416 20C2419 11 2422 7 2426 6C2427 5 2494 5 2579 5L2730 5L2733 6C2737 10 2737 16 2730 27C2728 31 2726 35 2726 36C2725 37 2723 43 2720 48C2711 69 2710 72 2708 78C2706 81 2703 89 2700 95C2697 101 2694 109 2693 112C2692 114 2690 120 2688 123C2683 133 2677 147 2677 150C2676 153 2669 169 2665 176C2663 180 2661 185 2660 188C2659 191 2657 194 2657 195C2656 197 2654 201 2653 205C2650 213 2642 232 2641 234C2640 234 2634 248 2628 264C2626 268 2623 277 2620 284C2617 291 2614 300 2612 304C2603 325 2599 335 2592 347C2588 353 2588 355 2591 357L2594 358L2600 358C2618 358 2728 359 2729 360C2730 360 2731 361 2731 363L2732 365L2730 369C2730 370 2727 374 2724 375C2722 377 2712 389 2703 401C2693 413 2682 426 2679 430C2675 435 2669 443 2664 448C2660 454 2649 467 2640 478C2620 502 2592 536 2574 558C2557 580 2542 598 2531 610C2527 615 2517 627 2509 636C2501 645 2491 657 2487 662C2483 667 2473 680 2464 690C2456 701 2444 716 2437 724C2431 733 2417 750 2406 763C2382 791 2362 816 2357 824C2355 827 2349 835 2344 841C2338 847 2332 855 2330 858C2328 861 2324 865 2323 866L2320 868L2308 868C2302 868 2278 868 2254 868L2211 868L2209 867C2204 865 2204 860 2209 850C2213 844 2217 832 2222 820C2225 809 2235 785 2246 760C2257 736 2266 714 2270 702C2272 697 2276 688 2278 684C2282 675 2286 664 2305 619C2317 590 2318 588 2327 564C2333 550 2339 534 2343 528C2350 512 2359 491 2372 458C2379 443 2387 423 2391 415C2395 406 2399 397 2400 394C2401 392 2404 385 2407 380L2411 370L2411 368C2410 366 2409 364 2407 364L2404 363L2346 363L2287 362L2285 364L2282 366L2278 375C2276 380 2271 392 2267 400C2263 409 2257 423 2254 430C2248 445 2237 473 2232 484C2230 487 2225 499 2221 508C2217 518 2212 531 2209 538C2203 550 2190 580 2187 588C2185 594 2182 598 2177 600L2174 601L1953 601L1732 602L1730 603C1728 604 1727 606 1726 608C1724 612 1718 628 1714 636C1712 639 1710 644 1710 646C1709 648 1705 656 1701 664C1697 672 1693 683 1690 688C1688 692 1685 700 1683 704C1681 709 1679 716 1677 720C1675 724 1672 732 1669 738C1667 744 1663 753 1661 758C1658 767 1653 778 1649 784C1647 787 1646 790 1649 792L1651 794L1721 794L1791 794L1793 792C1794 791 1797 785 1799 778C1802 772 1805 764 1807 760C1812 749 1817 737 1819 731C1820 729 1822 725 1823 722C1824 720 1826 714 1828 710C1831 700 1835 695 1839 694C1841 694 1853 694 1866 694L1890 695L1974 694C2019 693 2074 693 2096 693L2136 693L2139 695L2142 696L2143 700L2143 703L2140 708C2138 711 2136 716 2135 719C2132 725 2127 735 2118 756C2110 774 2105 787 2099 801C2087 833 2085 838 2083 840C2082 841 2080 846 2079 851C2076 859 2072 865 2069 867L2067 868L1968 868C1913 869 1767 868 1642 868ZM1906 527C1908 525 1913 516 1915 510C1916 508 1918 503 1920 498C1923 490 1925 484 1934 464C1937 457 1940 448 1942 445L1945 439L1945 436C1944 435 1943 433 1941 433L1938 432L1872 432L1806 433L1803 435L1800 436L1798 441C1797 443 1794 448 1793 452C1791 455 1790 458 1790 459C1790 460 1788 463 1787 467C1785 470 1783 475 1782 478C1781 480 1779 484 1778 487C1777 490 1774 495 1773 498C1773 501 1770 507 1768 511C1762 522 1763 527 1769 528C1770 528 1801 529 1838 529L1905 528L1906 527Z"/><circle cx="2645.0" cy="753.0" r="62" fill="none" stroke="currentColor" stroke-width="16"/><path d="M2623.0 787.0V719.0h26a20 20 0 0 1 0 40h-26M2647.0 759.0l22 28" fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="round"/></symbol>
+    <!-- The bolt from FUEL's cups and boxes -->
+    <symbol id="bolt" viewBox="0 0 60 100"><path d="M24 0h34L41 36h15L8 100l14-46H4z"/></symbol>
+  </svg>
+
   <a class="skip" href="#main" data-t="skip">Skip to content</a>
 
-  <!-- LOADER: the letters F-U-E-L drop in and stack while the kitchen lines change, then three curved curtains lift.
-       PLACEHOLDER: CRAV stacks a cartoon burger here. Swap the letters for a drawing of FUEL's own burger once we have their photos. -->
+  <!-- LOADER: five start lights come on one by one, go out, and the curtains lift -->
   <div class="loader" id="loader" aria-hidden="true">
     <svg class="curtain" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c3" d="M -1 -1 L 101 -1 L 101 101 Q 50 101 -1 101 Z"/></svg>
     <svg class="curtain" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c2" d="M -1 -1 L 101 -1 L 101 101 Q 50 101 -1 101 Z"/></svg>
     <svg class="curtain" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c1" d="M -1 -1 L 101 -1 L 101 101 Q 50 101 -1 101 Z"/></svg>
     <div class="loader-stage" id="loader-stage">
-      <div class="loader-stack" id="loader-stack">
-        <span class="ls">F</span><span class="ls">U</span><span class="ls">E</span><span class="ls">L</span>
-        <svg class="ls ls-bolt" viewBox="0 0 60 100"><path d="M36 0 4 58h22L18 100l38-62H33L44 0z"/></svg>
+      <svg class="loader-logo" id="loader-logo"><use href="#logo"/></svg>
+      <div class="lights" id="lights">
+        <span class="pod"><i></i><i></i></span><span class="pod"><i></i><i></i></span><span class="pod"><i></i><i></i></span><span class="pod"><i></i><i></i></span><span class="pod"><i></i><i></i></span>
       </div>
-      <div class="sparks" id="sparks"></div>
     </div>
-    <p class="loader-text" id="loader-text" data-t="load_1">Firing up the flat-top…</p>
+    <p class="loader-text" id="loader-text"></p>
     <div class="loader-bar"><i id="loader-bar"></i></div>
   </div>
 
   <header class="header" id="header">
-    <a class="brand" href="#top" aria-label="FUEL home">
-      <!-- PROVISIONAL wordmark: replace with FUEL's real logo file when the owner sends it -->
-      FUEL<svg viewBox="0 0 60 100" aria-hidden="true"><path d="M36 0 4 58h22L18 100l38-62H33L44 0z"/></svg>
-    </a>
+    <a class="brand" href="#top" aria-label="FUEL home"><svg><use href="#logo"/></svg></a>
     <div class="header-r">
       <button class="chip chip-line" id="lang" type="button" data-t="lang_switch">عربي</button>
       <a class="chip chip-red" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order_short">Order</a>
-      <button class="chip chip-line" id="menu-open" type="button" aria-expanded="false" aria-controls="overlay"><span data-t="menu_btn">Menu</span> <i class="ham"></i></button>
+      <button class="chip chip-chrome" id="menu-open" type="button" aria-expanded="false" aria-controls="overlay"><span data-t="menu_btn">Menu</span><i class="ham"></i></button>
     </div>
   </header>
 
   <div class="overlay" id="overlay" hidden>
-    <button class="chip chip-cream overlay-close" id="menu-close" type="button" data-t="close_btn">Close</button>
+    <button class="chip chip-line overlay-close" id="menu-close" type="button" data-t="close_btn">Close</button>
     <nav class="overlay-nav" aria-label="Main">
       <a href="#top" data-t="nav_home">Home</a>
+      <a href="#sellers" data-t="nav_top">Top sellers</a>
+      <a href="#fiesta" data-t="nav_fiesta">Fiesta</a>
       <a href="#menu" data-t="nav_menu">Menu</a>
-      <a href="#way" data-t="nav_way">The FUEL way</a>
-      <a href="#delivery" data-t="nav_delivery">Delivery</a>
+      <a href="#race" data-t="nav_race">Race Mode</a>
       <a href="#visit" data-t="nav_visit">Visit</a>
     </nav>
   </div>
 
   <main id="main">
-    <!-- HERO: giant headline, two rotated stickers, the burger pops up in front, the wordmark sits under it -->
+    <!-- HERO: the container at night, chrome headline, the Double Classic, the red logo -->
     <section class="hero" id="top">
+      <!-- Photo from FUEL's Instagram (sent by the team). PLACEHOLDER image until FUEL sends originals. -->
+      <img class="hero-bg" id="hero-bg" src="assets/img/container-night.webp" alt="" width="1206" height="2369" fetchpriority="high">
+      <i class="streak"></i>
       <div class="hero-head">
-        <h1 class="hero-title"><span class="split" data-t="hero_title">THE BURGER TRUCK</span></h1>
-        <p class="sticker st-mustard hero-st1" data-t="hero_st1">Abdoun
-Amman</p>
-        <p class="sticker st-mustard hero-st2" data-t="hero_st2">Open till
-1 AM</p>
+        <h1 class="hero-title chrome split" data-t="hero_title">YOUR FOODIE<br>PIT STOP</h1>
+        <p class="tag tag-red hero-st1" data-t="hero_st1">Fill your<br>passion tank</p>
+        <p class="tag tag-chrome hero-st2" data-t="hero_st2">Open till<br>2 AM</p>
       </div>
       <div class="hero-burger" id="hero-burger">
-        <!-- PLACEHOLDER image: FUEL's Double Classic, cut out on a transparent background -->
-        <figure class="ph ph-round"><span data-t="ph">Fuel photo goes here</span><small>Double Classic</small></figure>
+        <i class="ring" aria-hidden="true"></i>
+        <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+        <img src="assets/img/food/double-classic.webp" alt="FUEL's Double Classic burger with fries in a red FUEL box" width="826" height="850">
       </div>
-      <p class="hero-word" id="hero-word" data-t="hero_word">FUEL</p>
+      <svg class="hero-word" id="hero-word" role="img" aria-label="fuel"><use href="#logo"/></svg>
       <div class="hero-copy">
-        <p class="reveal" data-t="hero_l">Burgers, shakes and coffee from the truck in Abdoun. Open every day, 7 AM to 1 AM.</p>
-        <p class="reveal" data-t="hero_r">Order on the FUEL app and we bring it hot, anywhere in Amman.</p>
+        <p class="reveal" data-t="hero_l">Burgers, loaded fries, shakes and coffee from the FUEL container in Amman.</p>
+        <p class="reveal" data-t="hero_r">Open every day from 11 AM. Order on the FUEL app, or pull in.</p>
       </div>
     </section>
 
-    <!-- STATEMENT: sticker, two-line headline, three tilted cards that lean towards the mouse -->
-    <section class="statement" id="menu-cards">
-      <p class="sticker st-red pop" data-t="st_tag">From the truck</p>
-      <h2 class="big red"><span class="split" data-t="st_title">HOT OFF
-THE TRUCK</span></h2>
-      <p class="lead reveal" data-t="st_copy">Street food with a full tank. Burgers, combos, sides and shakes, handed over hot from the truck in Abdoun.</p>
-      <a class="blob" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order">Order now</a>
-      <div class="cards" id="cards">
-        <a class="card" href="https://bitesnbags.com/place/fuel-foodtruck"><figure class="ph"><span data-t="ph">Fuel photo goes here</span><small>Burger</small></figure><b data-t="c_burgers">Burgers</b></a><!-- PLACEHOLDER image -->
-        <a class="card" href="https://bitesnbags.com/place/fuel-foodtruck"><figure class="ph"><span data-t="ph">Fuel photo goes here</span><small>Fries</small></figure><b data-t="c_sides">Sides</b></a><!-- PLACEHOLDER image -->
-        <a class="card" href="https://bitesnbags.com/place/fuel-foodtruck"><figure class="ph"><span data-t="ph">Fuel photo goes here</span><small>Shake</small></figure><b data-t="c_shakes">Shakes</b></a><!-- PLACEHOLDER image -->
-      </div>
+    <!-- TOP SELLERS: four tilted photo cards that lean with the mouse -->
+    <section class="sellers" id="sellers">
+      <i class="streak"></i>
+      <p class="script pop" data-t="top_tag">decided by you</p>
+      <h2 class="big chrome split" data-t="top_title">THE TOP<br>SELLERS</h2>
+      <p class="lead reveal" data-t="top_copy">Four orders that keep the grill busy.</p>
+      <a class="btn" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order">Order now</a>
+      <ol class="cards" id="cards">
+        <li class="card"><span class="card-n">01</span>
+          <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+          <img src="assets/img/food/double-classic.webp" alt="Double Classic burger" width="826" height="850" loading="lazy">
+          <b data-t="t_classic">Double Classic</b><em>5.50 <small data-t="jd">JD</small></em></li>
+        <li class="card"><span class="card-n">02</span>
+          <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+          <img src="assets/img/food/animal-fries.webp" alt="Animal Fries in a red FUEL box" width="760" height="850" loading="lazy">
+          <b data-t="t_fries">Animal Fries</b><em>3.50 <small data-t="jd">JD</small></em></li>
+        <li class="card card-sig"><span class="card-n">03</span>
+          <p class="tag tag-red card-tag" data-t="sig">Signature drink</p>
+          <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+          <img src="assets/img/food/mango-coco.webp" alt="Mango Coco shake in a FUEL cup" width="900" height="1000" loading="lazy">
+          <b data-t="t_mango">Mango Coco</b><em>3.75 <small data-t="jd">JD</small></em></li>
+        <li class="card"><span class="card-n">04</span>
+          <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+          <img src="assets/img/food/double-truffle.webp" alt="Double Truffle burger in FUEL wrap" width="900" height="700" loading="lazy">
+          <b data-t="t_truffle">Double Truffle</b><em>6.50 <small data-t="jd">JD</small></em></li>
+      </ol>
     </section>
 
-    <!-- EXPERIENCE (red): wave edge, headline, the burger grows as you scroll, facts at both sides -->
-    <section class="experience red-bg" id="way">
-      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
-      <p class="sticker st-mustard pop" data-t="exp_tag">The FUEL way</p>
-      <h2 class="big cream"><span class="split" data-t="exp_title">MADE FOR
-THE CRAVING</span></h2>
-      <div class="exp-stage">
-        <div class="exp-burger" id="exp-burger">
-          <!-- PLACEHOLDER image: a second FUEL burger, cut out -->
-          <figure class="ph ph-round ph-dark"><span data-t="ph">Fuel photo goes here</span><small>Burger, cut out</small></figure>
+    <!-- PASSION TANK (red): Mango Coco grows as you scroll, hours left and right -->
+    <section class="tank" id="tank">
+      <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 14 L100 2 L100 20.5 Z"/></svg>
+      <p class="tag tag-black pop" data-t="tank_tag">The signature drink</p>
+      <h2 class="big white split" data-t="tank_title">FILL YOUR<br>PASSION TANK</h2>
+      <p class="lead reveal" data-t="tank_copy">Mango Coco.</p>
+      <div class="tank-stage">
+        <div class="tank-cup" id="tank-cup">
+          <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+          <img src="assets/img/food/mango-coco.webp" alt="Mango Coco, FUEL's signature drink" width="900" height="1000" loading="lazy">
         </div>
-        <ul class="exp-facts exp-l"><li data-t="exp_l1">7 AM to 1 AM</li><li data-t="exp_l2">Every day</li><li data-t="exp_l3">Abdoun, Amman</li></ul>
-        <ul class="exp-facts exp-r"><li data-t="exp_r1">All of Amman</li><li data-t="exp_r2">Delivery on the app</li><li data-t="exp_r3">Or pick up at the truck</li></ul>
+        <ul class="tank-facts tank-l"><li data-t="tank_l1">Sun to Thu</li><li data-t="tank_l2">11 AM – 1 AM</li></ul>
+        <ul class="tank-facts tank-r"><li data-t="tank_r1">Fri &amp; Sat</li><li data-t="tank_r2">11 AM – 2 AM</li></ul>
       </div>
     </section>
 
-    <!-- FULL-BLEED: wavy top and bottom, the picture zooms as you scroll. This is where the hero video goes. -->
+    <!-- FULL-BLEED: the classics, Eat. Drive. Repeat! -->
     <section class="full" id="full">
-      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 2 L100 14 L100 20.5 Z"/></svg>
       <div class="full-media" id="full-media">
-        <!-- PLACEHOLDER video: FUEL burger close-up (Higgsfield, after approval) or the owner's own footage -->
-        <figure class="ph ph-fill"><span data-t="ph">Fuel photo goes here</span><small>Close-up of a burger in hand, or the hero video</small></figure>
+        <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+        <img src="assets/img/food/classics.webp" alt="Five FUEL classic burgers held up together" width="935" height="1000" loading="lazy">
+        <h2 class="full-title chrome split" data-t="full_title">EAT. DRIVE.<br>REPEAT!</h2>
       </div>
-      <h2 class="full-title"><span class="split" data-t="full_title">BUILT FOR
-THE CRAVING.</span></h2>
     </section>
 
-    <!-- MENU (cream): wave edge, sticker, headline, FUEL's real menu sections -->
+    <!-- FIESTA: the page bursts into colour for the Mexican menu -->
+    <section class="fiesta" id="fiesta">
+      <div class="fiesta-bg" id="fiesta-bg" aria-hidden="true"></div>
+      <div class="picado" id="picado" aria-hidden="true"></div>
+      <div class="fiesta-in">
+        <p class="tag tag-pink pop" dir="ltr" data-t="fi_tag">Sabor del Verano!</p>
+        <h2 class="fiesta-title split" dir="ltr" data-t="fi_title">¡FIESTA!</h2>
+        <p class="lead reveal" data-t="fi_copy">The new Mexican menu at FUEL.</p>
+        <ul class="fi-cards" id="fi-cards">
+          <li class="fi-card c-pink">
+            <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+            <img src="assets/img/food/mexican-burger.webp" alt="Mexican Burger with jalapeños and pico de gallo" width="926" height="1000" loading="lazy">
+            <h3 data-t="fi_1">Mexican Burger</h3><p data-t="fi_1d"></p></li>
+          <li class="fi-card c-green">
+            <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+            <img src="assets/img/food/mexican-fries.webp" alt="Mexican Loaded Fries with guacamole and jalapeños" width="891" height="1000" loading="lazy">
+            <h3 data-t="fi_2">Mexican Loaded Fries</h3><p data-t="fi_2d"></p></li>
+          <li class="fi-card c-orange">
+            <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+            <img src="assets/img/food/jalapeno-poppers.webp" alt="Jalapeño Poppers in a FUEL paper bag" width="603" height="700" loading="lazy">
+            <h3 data-t="fi_3">Jalapeño Poppers</h3><p data-t="fi_3d"></p></li>
+          <li class="fi-card c-teal">
+            <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+            <img src="assets/img/food/mexican-refresher.webp" alt="Mexican Refresher with a chamoy and tajín rim" width="603" height="700" loading="lazy">
+            <h3 data-t="fi_4">Mexican Refresher</h3><p data-t="fi_4d"></p></li>
+        </ul>
+        <p class="fi-note reveal" data-t="fi_note">Fiesta prices at the container.</p>
+        <a class="btn btn-black" href="https://bitesnbags.com/place/fuel-foodtruck" dir="ltr" data-t="fi_go">¡Vámonos!</a>
+      </div>
+    </section>
+
+    <!-- MENU: every price, in mono, like a timing sheet -->
     <section class="menu" id="menu">
-      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
-      <p class="sticker st-red pop" data-t="menu_tag">The menu</p>
-      <h2 class="big red"><span class="split" data-t="menu_title">PICK YOUR
-FUEL</span></h2>
-      <ul class="menu-list" id="menu-list">
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_burgers">Burgers</span><i>01</i></a></li>
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_combos">Combos</span><i>02</i></a></li>
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_sides">Sides</span><i>03</i></a></li>
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_shakes">Shakes</span><i>04</i></a></li>
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_refreshers">Refreshers</span><i>05</i></a></li>
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_coffee">Coffee</span><i>06</i></a></li>
-        <li><a href="https://bitesnbags.com/place/fuel-foodtruck"><span data-t="m_bev">Beverages</span><i>07</i></a></li>
-      </ul>
-      <p class="menu-note" data-t="menu_note">Full menu and prices are in the FUEL app.</p>
-      <a class="bed" href="https://7hillsjo.com/eat-drink/fuel-your-go-burger-food-truck-serves-bold-new-bedouin-inspired-concept">
-        <p class="sticker st-mustard" data-t="bed_tag">Ramadan 2026</p>
-        <h3 data-t="bed_title">Bedouin Soft Serve</h3>
-        <p data-t="bed_copy">Soft serve meets Lazzagiyat, the Bedouin sweet. Launched with a film shot in Wadi Rum.</p>
-        <span class="bed-cta"><span data-t="bed_cta">Read the story</span> →</span>
-      </a>
+      <i class="streak"></i>
+      <p class="tag tag-red pop" data-t="menu_tag">Prices in JD</p>
+      <h2 class="big chrome split" data-t="menu_title">THE MENU</h2>
+      <div class="menu-grid" id="menu-grid"></div>
+      <p class="menu-note reveal" data-t="menu_note">Upgrade any drink to large for only 0.50 JD.</p>
     </section>
 
-    <!-- DELIVERY (yellow): a dashed route snakes down the section and the FUEL bolt rides it as you scroll -->
-    <section class="delivery" id="delivery">
-      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
-      <div class="del-head">
-        <p class="sticker st-red pop" data-t="del_tag">Delivery</p>
-        <h2 class="big white"><span class="split" data-t="del_title">HOT ANYWHERE
-IN AMMAN</span></h2>
-        <p class="lead reveal" data-t="del_copy">From the truck in Abdoun to your door. Order on the FUEL app or on the web.</p>
-      </div>
-      <div class="route" id="route">
-        <svg class="route-svg" id="route-svg" aria-hidden="true"><path id="route-path"/></svg>
-        <svg class="rider" id="rider" viewBox="0 0 60 100" aria-hidden="true"><path d="M36 0 4 58h22L18 100l38-62H33L44 0z"/></svg>
-        <ol class="stops">
-          <li class="stop"><p class="sticker st-red">1</p><h3 data-t="s1_t">Order</h3><p data-t="s1_d">On the FUEL app or on the web.</p></li>
-          <li class="stop"><p class="sticker st-red">2</p><h3 data-t="s2_t">Track it</h3><p data-t="s2_d">Follow your driver on the map.</p></li>
-          <li class="stop"><p class="sticker st-red">3</p><h3 data-t="s3_t">Pay your way</h3><p data-t="s3_d">Cash or card.</p></li>
-          <li class="stop"><p class="sticker st-red">4</p><h3 data-t="s4_t">Collect points</h3><p data-t="s4_d">App-only deals and points on every order.</p></li>
+    <!-- RACE MODE: the loyalty track; the bolt rides it as you scroll -->
+    <section class="race" id="race">
+      <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 14 L100 2 L100 20.5 Z"/></svg>
+      <p class="tag tag-black pop" data-t="race_tag">Race Mode</p>
+      <h2 class="big white split" data-t="race_title">HOW LOYAL<br>ARE YOU?</h2>
+      <p class="lead reveal" data-t="race_copy">Earn points with every order.</p>
+      <div class="track" id="track">
+        <div class="track-line"><i id="track-fill"></i></div>
+        <svg class="track-bolt" id="track-bolt" aria-hidden="true"><use href="#bolt"/></svg>
+        <ol class="checks">
+          <li class="check"><span class="dot"></span><b>5K</b><small data-t="r_check">Checkpoint</small></li>
+          <li class="check"><span class="dot"></span><b>7.5K</b><small data-t="r_check">Checkpoint</small></li>
+          <li class="check"><span class="dot"></span><b>10K</b><small data-t="r_check">Checkpoint</small></li>
+          <li class="check check-big"><span class="dot"></span><b>15K</b><small data-t="r_15">15% discount</small></li>
+          <li class="check check-big"><span class="dot"></span><b>20K</b><small data-t="r_20">Pick your reward, up to 20 JD</small></li>
         </ol>
       </div>
-      <div class="ctas">
-        <a class="blob" href="https://play.google.com/store/apps/details?id=com.bitesnbags.fuel" data-t="get_app">Get the app</a>
-        <a class="blob blob-line" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order_web">Order on the web</a>
-      </div>
+      <!-- Race Mode runs on Vuedale. Swap in FUEL's exact sign-up link when the team has it. -->
+      <a class="btn btn-black" href="https://vuedale.com" data-t="race_cta">Join Race Mode</a>
     </section>
 
-    <!-- VISIT (cream): sticker, headline, open-now badge, the map card tilted like a photo -->
+    <!-- VISIT: the container, hours, phone, directions, map -->
     <section class="visit" id="visit">
-      <svg class="wave wave-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <i class="streak"></i>
+      <figure class="visit-photo">
+        <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
+        <img src="assets/img/food/container-hill.webp" alt="The FUEL container on a hill" width="1000" height="788" loading="lazy">
+      </figure>
       <div class="visit-copy">
-        <p class="sticker st-red pop" data-t="visit_tag">Visit the truck</p>
-        <h2 class="big red"><span class="split" data-t="visit_title">COME SAY
-HI</span></h2>
-        <p class="lead reveal" data-t="visit_copy">Find the truck in Abdoun, Amman. Every day, 7 AM to 1 AM.</p>
-        <p class="open" id="open"><i></i><span>&nbsp;</span></p>
-        <dl class="visit-list">
+        <p class="tag tag-red pop" data-t="visit_tag">Pull in</p>
+        <h2 class="big chrome split" data-t="visit_title">COME FILL<br>UP</h2>
+        <p class="reveal" data-t="visit_copy">Find the FUEL container in Amman.</p>
+        <p class="open" id="open"><i></i><span></span></p>
+        <dl class="visit-list reveal">
+          <div><dt data-t="v_hours">Hours</dt><dd><span data-t="v_week">Sun–Thu 11 AM – 1 AM</span><br><span data-t="v_wkend">Fri–Sat 11 AM – 2 AM</span></dd></div>
           <div><dt data-t="v_phone">Phone</dt><dd><a href="tel:+962792620002" dir="ltr">+962 79 262 0002</a></dd></div>
           <div><dt data-t="v_ig">Instagram</dt><dd><a href="https://www.instagram.com/fuel_foodtruck/" dir="ltr">@fuel_foodtruck</a></dd></div>
         </dl>
         <div class="ctas">
-          <a class="blob" href="https://www.google.com/maps/search/?api=1&amp;query=Fuel+Food+Truck+Abdoun+Amman" data-t="directions">Directions</a>
-          <a class="blob blob-line" href="tel:+962792620002" data-t="call">Call the truck</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Fuel+Food+Truck+Abdoun+Amman" data-t="directions">Directions</a>
+          <a class="btn btn-line" href="https://play.google.com/store/apps/details?id=com.bitesnbags.fuel" data-t="get_app">Get the app</a>
+          <a class="btn btn-line" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order_web">Order on the web</a>
         </div>
       </div>
       <div class="visit-map">
-        <iframe title="Map to FUEL Food Truck in Abdoun" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        <iframe title="Map to FUEL in Amman" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=Fuel+Food+Truck+Abdoun+Amman&amp;output=embed"></iframe>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER: links, a rule that draws itself, the giant wordmark with bolts tossed up and falling behind it -->
-  <footer class="footer" id="footer">
+  <footer class="footer">
     <div class="foot-top">
       <nav class="foot-nav" aria-label="Footer">
-        <a href="#top" data-t="nav_home">Home</a>
+        <a href="#sellers" data-t="nav_top">Top sellers</a>
+        <a href="#fiesta" data-t="nav_fiesta">Fiesta</a>
         <a href="#menu" data-t="nav_menu">Menu</a>
+        <a href="#race" data-t="nav_race">Race Mode</a>
+        <a href="#visit" data-t="nav_visit">Visit</a>
         <a href="https://www.instagram.com/fuel_foodtruck/">Instagram</a>
-        <a href="tel:+962792620002" data-t="call_short">Call</a>
       </nav>
-      <p class="foot-copy">© <span id="year">2026</span> FUEL Food Truck · <span data-t="foot_small">Concept website preview</span></p>
+      <p class="foot-small">© <span id="year">2026</span> FUEL · <span data-t="foot_small">Concept website preview</span> · <span data-t="photo_note">Photos from @fuel_foodtruck</span></p>
     </div>
     <div class="foot-rule"><i id="foot-rule"></i></div>
-    <p class="foot-line" data-t="foot_line">Burgers · Shakes · Coffee · Abdoun, Amman · Open till 1 AM</p>
+    <p class="foot-line" data-t="foot_line">Eat. Drive. Repeat!</p>
     <div class="foot-stage" id="foot-stage">
-      <!-- PLACEHOLDER: CRAV juggles ingredient cut-outs here. These are FUEL bolts until we have their food photos. -->
-      <p class="foot-word" data-t="hero_word">FUEL</p>
+      <svg class="foot-word" role="img" aria-label="fuel"><use href="#logo"/></svg>
     </div>
   </footer>
 
-  <!-- Phone bar -->
-  <div class="mbar" id="mbar">
+  <nav class="mbar" aria-label="Quick actions">
     <a href="tel:+962792620002" data-t="call_short">Call</a>
     <a href="https://www.google.com/maps/search/?api=1&amp;query=Fuel+Food+Truck+Abdoun+Amman" data-t="directions">Directions</a>
     <a class="mbar-main" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order">Order now</a>
-  </div>
+  </nav>
 
   <script src="assets/js/vendor/gsap.min.js"></script>
   <script src="assets/js/vendor/ScrollTrigger.min.js"></script>

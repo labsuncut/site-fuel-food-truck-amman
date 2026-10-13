@@ -1,8 +1,8 @@
 {
-  "_note": "Every fact about the business lives here. Source: intake issue labsuncut/ops#3. Empty means we don't know it yet.",
+  "_note": "Every fact about the business lives here. Sources: intake issue labsuncut/ops#3, FUEL's Instagram (@fuel_foodtruck) and the team (2026-10-13). Empty means we don't know it yet.",
   "name": "FUEL Food Truck",
-  "tagline": "Burgers, shakes and coffee from the truck in Abdoun",
-  "category": "Burger food truck",
+  "tagline": "Eat. Drive. Repeat! Your foodie pit stop at FUEL",
+  "category": "Burger spot in a container kiosk",
   "phone": "+962 79 262 0002",
   "email": "",
   "address": {
@@ -14,27 +14,68 @@
     "plus_code": "WVPF+66 Amman"
   },
   "hours": [
-    { "days": "Every day", "open": "7:00 AM", "close": "1:00 AM" }
+    {
+      "days": "Sunday to Thursday",
+      "open": "11:00 AM",
+      "close": "1:00 AM"
+    },
+    {
+      "days": "Friday and Saturday",
+      "open": "11:00 AM",
+      "close": "2:00 AM",
+      "_note": "Team said 'weekends'; we assumed Friday and Saturday."
+    }
   ],
   "services": [
-    { "name": "Menu sections", "description": "Burgers, Combos, Sides, Shakes, Refreshers, Coffee, Beverages" },
-    { "name": "Delivery", "description": "Anywhere in Amman, or pickup, through the FUEL app. Cash or card. App-only deals and loyalty points." },
-    { "name": "Bedouin Soft Serve", "description": "Soft serve with Lazzagiyat, a Bedouin dessert (Ramadan 2026 concept)." }
+    {
+      "name": "Burgers",
+      "description": "Classic burger single 4.00, double 5.50, triple 7.00, 4*4 8.50 JD. Truffle burger single 5.00, double 6.50, triple 8.00 JD. Combos with a soft drink, or +2 JD for a milkshake."
+    },
+    {
+      "name": "Sides",
+      "description": "Caviar Fries 5.00, Animal Fries 3.50, Skin On Fries 2.00, Fries 1.50, Fuel Sauce 0.50 JD."
+    },
+    {
+      "name": "Drinks and sweets",
+      "description": "Shakes 3.75 (Mango Coco, Birthday Shake, Strawberry Cream), refreshers 3.50, coffee 2.50 to 4.00, S'mores hot chocolate 4.00, ice cream 3.00 JD. Full list in assets/js/content.js."
+    },
+    {
+      "name": "Fiesta (Mexican menu)",
+      "description": "Mexican Burger, Mexican Loaded Fries, Jalapeño Poppers, Mexican Refresher. Prices not known yet."
+    },
+    {
+      "name": "Race Mode",
+      "description": "Loyalty points on every order (Vuedale wallet card). 15,000 points = 15% discount; 20,000 points = pick a reward up to 20 JD. Monthly Top Fueler."
+    },
+    {
+      "name": "Delivery",
+      "description": "Through the FUEL app (bitesnbags) or on the web."
+    }
   ],
-  "best_seller": "Double Classic (Careem roundup)",
   "about": "",
   "reviews": [],
   "colors": {
-    "brand": "#f91814",
-    "accent": "#ffd54a",
-    "_note": "Provisional. Confirm against FUEL's real logo."
+    "brand": "#ED1C24",
+    "accent": "#9AA1A9",
+    "_note": "Red from FUEL's brand pack; black and chrome per the 2026 rebrand."
   },
   "links": {
     "google": "",
     "instagram": "https://www.instagram.com/fuel_foodtruck/",
     "facebook": "",
     "order": "https://bitesnbags.com/place/fuel-foodtruck",
-    "android_app": "https://play.google.com/store/apps/details?id=com.bitesnbags.fuel"
+    "android_app": "https://play.google.com/store/apps/details?id=com.bitesnbags.fuel",
+    "race_mode": "https://vuedale.com"
   },
-  "domain": ""
+  "domain": "",
+  "top_sellers": [
+    "Double Classic",
+    "Animal Fries",
+    "Mango Coco (signature drink)",
+    "Double Truffle"
+  ],
+  "fonts": {
+    "logo": "Pace Extra Bold Slanted (paid, Ratzlaff Type)",
+    "site": "Saira Black Italic (free stand-in), Space Mono, Cairo for Arabic"
+  }
 }
