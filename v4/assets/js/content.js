@@ -25,6 +25,14 @@ const MENU = [
   { key: 'm_sweet', rows: [['S\'mores Hot Chocolate', '4.00'], ['Vanilla Salted Caramel Ice Cream', '3.00'], ['Matcha Ice Cream', '3.00']] },
 ];
 
+// The four top sellers (FUEL's own ranking). Prices match the MENU rows above; change them here, not in the HTML.
+const TOP = [
+  { key: 't_classic', price: '5.50' },
+  { key: 't_fries', price: '3.50' },
+  { key: 't_mango', price: '3.75' },
+  { key: 't_truffle', price: '6.50' },
+];
+
 const TEXT = {
   en: {
     skip: 'Skip to content', lang_switch: 'عربي', menu_btn: 'Menu', close_btn: 'Close',
@@ -35,7 +43,7 @@ const TEXT = {
     hero_title: 'YOUR FOODIE\nPIT STOP', hero_st1: 'Fill your\npassion tank', hero_st2: 'Open till\n2 AM',
     hero_l: 'Burgers, loaded fries, shakes and coffee from the FUEL container in Amman.',
     hero_r: 'Open every day from 11 AM. Order on the FUEL app, or pull in.',
-    photo_note: 'Photos from @fuel_foodtruck',
+    photo_note: 'Photos from', lang_switch_label: 'Switch to Arabic',
 
     top_tag: 'decided by you', top_title: 'THE TOP\nSELLERS',
     top_copy: 'Four orders that keep the grill busy. Your favourites, ranked by you.',
@@ -88,7 +96,7 @@ const TEXT = {
     hero_title: 'محطتك\nللأكل الطيب', hero_st1: 'عبّي\nتانك الشغف', hero_st2: 'مفتوحين\nلحد 2',
     hero_l: 'برغر، بطاطا محمّلة، ميلك شيك وقهوة من كونتينر فيول في عمّان.',
     hero_r: 'مفتوحين كل يوم من 11 الصبح. اطلب من تطبيق فيول أو مرّ علينا.',
-    photo_note: 'الصور من @fuel_foodtruck',
+    photo_note: 'الصور من', lang_switch_label: 'التبديل إلى الإنجليزية',
 
     top_tag: 'إنتو اخترتوها', top_title: 'الأكثر\nمبيعاً',
     top_copy: 'أربع طلبات ما بتخلّي الصاج يرتاح. المفضّلة عندكم، بترتيبكم.',

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Saira Black Italic is the free stand-in for the logo's font (Pace Extra Bold Slanted, a paid font). -->
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@1,50..125,700..900&family=Space+Mono:wght@400;700&family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@1,62.5..75,900&family=Caveat:wght@700&family=Space+Mono:wght@400;700&family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>
     // Pick the language before anything paints, so there is no flash of the wrong one.
@@ -71,13 +71,13 @@
   <header class="header" id="header">
     <a class="brand" href="#top" aria-label="FUEL home"><svg><use href="#logo"/></svg></a>
     <div class="header-r">
-      <button class="chip chip-line" id="lang" type="button" data-t="lang_switch">عربي</button>
+      <button class="chip chip-line" id="lang" type="button" lang="ar" aria-label="Switch to Arabic" data-t="lang_switch">عربي</button>
       <a class="chip chip-red chip-order" id="chip-order" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order_short">Order</a>
       <button class="chip chip-chrome" id="menu-open" type="button" aria-expanded="false" aria-controls="overlay"><span data-t="menu_btn">Menu</span><i class="ham"><i></i><i></i><i></i></i></button>
     </div>
   </header>
 
-  <div class="overlay" id="overlay" hidden>
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <button class="chip chip-line overlay-close" id="menu-close" type="button" data-t="close_btn">Close</button>
     <nav class="overlay-nav" aria-label="Main">
       <a href="#top" data-t="nav_home">Home</a>
@@ -90,9 +90,9 @@
     <i class="chequer overlay-chequer" aria-hidden="true"></i>
   </div>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <!-- HERO: the container film at night, chrome headline, the red logo -->
-    <section class="hero" id="top">
+    <section class="hero" id="top" tabindex="-1">
       <div class="hero-media" id="hero-media">
         <!-- Frame 0 of the hero film. The film itself was generated from FUEL's own photo of the container (Instagram). PLACEHOLDER until FUEL sends originals. -->
         <img class="hero-bg" id="hero-bg" src="assets/img/container-night.webp" alt="" width="1080" height="1920" fetchpriority="high">
@@ -118,7 +118,7 @@
     </section>
 
     <!-- TOP SELLERS: one pinned stage; the four cut-outs fly down the night road one by one -->
-    <section class="fly" id="sellers">
+    <section class="fly" id="sellers" tabindex="-1">
       <div class="fly-stage" id="fly-stage">
         <div class="road-wrap" aria-hidden="true"><div class="road"><div class="road-strip" id="road-strip"></div></div><i class="road-fade"></i></div>
         <i class="glow" id="glow" aria-hidden="true"></i>
@@ -147,45 +147,45 @@
           <ol class="fly-list" id="fly-list">
             <li><span class="slot">
               <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-              <img src="assets/img/cut/double-classic.webp" alt="Double Classic burger with fries in a red FUEL box" width="827" height="761" loading="lazy"></span>
+              <img src="assets/img/cut/double-classic.webp" alt="Double Classic burger with fries in a red FUEL box" width="827" height="761" loading="lazy" decoding="async"></span>
               <b data-t="t_classic">Double Classic</b><em dir="ltr">5.50 <small data-t="jd">JD</small></em></li>
             <li><span class="slot">
               <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-              <img src="assets/img/cut/animal-fries.webp" alt="Animal Fries in a red FUEL box" width="646" height="723" loading="lazy"></span>
+              <img src="assets/img/cut/animal-fries.webp" alt="Animal Fries in a red FUEL box" width="646" height="723" loading="lazy" decoding="async"></span>
               <b data-t="t_fries">Animal Fries</b><em dir="ltr">3.50 <small data-t="jd">JD</small></em></li>
             <li><span class="slot">
               <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-              <img src="assets/img/cut/mango-coco.webp" alt="Mango Coco shake in a FUEL cup" width="568" height="900" loading="lazy"></span>
+              <img src="assets/img/cut/mango-coco.webp" alt="Mango Coco shake in a FUEL cup" width="568" height="900" loading="lazy" decoding="async"></span>
               <b data-t="t_mango">Mango Coco</b><em dir="ltr">3.75 <small data-t="jd">JD</small></em></li>
             <li><span class="slot">
               <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-              <img src="assets/img/cut/double-truffle.webp" alt="Double Truffle burger in FUEL wrap" width="586" height="422" loading="lazy"></span>
+              <img src="assets/img/cut/double-truffle.webp" alt="Double Truffle burger in FUEL wrap" width="586" height="422" loading="lazy" decoding="async"></span>
               <b data-t="t_truffle">Double Truffle</b><em dir="ltr">6.50 <small data-t="jd">JD</small></em></li>
           </ol>
-          <p class="lead" data-t="top_copy">Four orders that keep the grill busy.</p>
+          <p class="lead" data-t="top_copy">Four orders that keep the grill busy. Your favourites, ranked by you.</p>
           <a class="btn" href="https://bitesnbags.com/place/fuel-foodtruck" data-t="order">Order now</a>
         </div>
       </div>
     </section>
 
     <!-- PASSION TANK (red): the cup fills as you scroll, the fuel gauge swings to F -->
-    <section class="tank" id="tank">
+    <section class="tank" id="tank" tabindex="-1">
       <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 14 L100 2 L100 20.5 Z"/></svg>
       <div class="chapter-in">
         <p class="tag tag-black pop" data-t="tank_tag">The signature drink</p>
         <h2 class="big white split tank-title" data-t="tank_title">FILL YOUR<br>PASSION TANK</h2>
-        <p class="lead reveal" data-t="tank_copy">Mango Coco.</p>
+        <p class="lead reveal" data-t="tank_copy">Mango Coco, the shake in the cup with the bolt. Add whipped cream on top for 0.50 JD.</p>
         <div class="tank-stage" id="tank-stage">
           <div class="tank-cup">
             <div class="tank-fill" id="tank-fill">
               <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-              <img src="assets/img/cut/mango-coco.webp" alt="Mango Coco, FUEL's signature drink" width="568" height="900" loading="lazy">
+              <img src="assets/img/cut/mango-coco.webp" alt="Mango Coco, FUEL's signature drink" width="568" height="900" loading="lazy" decoding="async">
             </div>
             <i class="tank-shadow" aria-hidden="true"></i>
           </div>
           <div class="gauge-row">
             <div class="plate plate-s"><i><small data-t="tank_l1">Sun to Thu</small><b data-t="tank_l2">11 AM – 1 AM</b></i></div>
-            <div class="gauge" id="gauge" aria-hidden="true"></div>
+            <div class="gauge" id="gauge" aria-hidden="true"><svg viewBox="0 0 200 140"><g class="mirror"><path class="arc" d="M24.8 127.4A80 80 0 1 1 175.2 127.4"/><path class="arc-f" d="M177.9 82.0A80 80 0 0 1 175.2 127.4"/><line class="tick long" x1="32.3" y1="124.6" x2="45.5" y2="119.8"/><line class="tick" x1="29.2" y1="113.0" x2="37.1" y2="111.6"/><line class="tick" x1="28.0" y1="101.1" x2="36.0" y2="101.0"/><line class="tick" x1="28.8" y1="89.1" x2="36.7" y2="90.3"/><line class="tick" x1="31.6" y1="77.4" x2="39.2" y2="79.9"/><line class="tick long" x1="36.3" y1="66.4" x2="48.7" y2="72.9"/><line class="tick" x1="42.8" y1="56.3" x2="49.2" y2="61.1"/><line class="tick" x1="50.9" y1="47.4" x2="56.3" y2="53.2"/><line class="tick" x1="60.3" y1="39.9" x2="64.7" y2="46.6"/><line class="tick" x1="70.8" y1="34.2" x2="74.1" y2="41.5"/><line class="tick long" x1="82.2" y1="30.2" x2="85.6" y2="43.8"/><line class="tick" x1="94.0" y1="28.3" x2="94.7" y2="36.2"/><line class="tick" x1="106.0" y1="28.3" x2="105.3" y2="36.2"/><line class="tick" x1="117.8" y1="30.2" x2="115.9" y2="38.0"/><line class="tick" x1="129.2" y1="34.2" x2="125.9" y2="41.5"/><line class="tick long" x1="139.7" y1="39.9" x2="132.0" y2="51.6"/><line class="tick" x1="149.1" y1="47.4" x2="143.7" y2="53.2"/><line class="tick" x1="157.2" y1="56.3" x2="150.8" y2="61.1"/><line class="tick" x1="163.7" y1="66.4" x2="156.6" y2="70.1"/><line class="tick" x1="168.4" y1="77.4" x2="160.8" y2="79.9"/><line class="tick long" x1="171.2" y1="89.1" x2="157.3" y2="91.2"/><line class="tick" x1="172.0" y1="101.1" x2="164.0" y2="101.0"/><line class="tick" x1="170.8" y1="113.0" x2="162.9" y2="111.6"/><line class="tick long" x1="167.7" y1="124.6" x2="154.5" y2="119.8"/><line class="needle" id="needle" x1="100" y1="100" x2="100" y2="34"/><circle class="pivot" cx="100" cy="100" r="7"/></g><text x="14" y="134" text-anchor="middle">E</text><text x="186" y="134" text-anchor="middle">F</text></svg></div>
             <div class="plate plate-e"><i><small data-t="tank_r1">Fri &amp; Sat</small><b data-t="tank_r2">11 AM – 2 AM</b></i></div>
           </div>
         </div>
@@ -193,11 +193,11 @@
     </section>
 
     <!-- FULL-BLEED: the classics behind a letterbox that opens; Eat. Drive. Repeat! stamps in -->
-    <section class="full" id="full">
+    <section class="full" id="full" tabindex="-1">
       <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 2 L100 14 L100 20.5 Z"/></svg>
       <div class="full-media" id="full-media">
         <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-        <img id="full-img" src="assets/img/food/classics.webp" alt="Five FUEL classic burgers held up together" width="935" height="1000" loading="lazy">
+        <img id="full-img" src="assets/img/food/classics.webp" alt="Five FUEL classic burgers held up together" width="935" height="1000" loading="lazy" decoding="async">
         <i class="full-shade" aria-hidden="true"></i>
         <h2 class="full-title chrome" id="full-title" data-words="full_title">EAT. DRIVE. REPEAT!</h2>
         <i class="full-rule" id="full-rule" aria-hidden="true"></i>
@@ -207,33 +207,33 @@
     </section>
 
     <!-- FIESTA: the page bursts into colour for the Mexican menu -->
-    <section class="fiesta" id="fiesta">
+    <section class="fiesta" id="fiesta" tabindex="-1">
       <div class="fiesta-bg" id="fiesta-bg" aria-hidden="true"></div>
-      <div class="picado" id="picado" aria-hidden="true"><i class="picado-line" id="picado-line"></i></div>
+      <div class="picado" id="picado" aria-hidden="true"><i class="picado-line" id="picado-line"></i><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ff2e88" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#18b04c" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ff6a1a" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#00b3c7" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#7b3fe4" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ed1c24" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ff2e88" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#18b04c" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ff6a1a" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#00b3c7" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#7b3fe4" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ed1c24" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#ff2e88" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div><div class="flag"><svg viewBox="0 0 100 112"><path fill="#18b04c" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/><g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/><path d="M10 8h10l-5 7zM30 8h10l-5 7zM50 8h10l-5 7zM70 8h10l-5 7zM20 86h8l-4 6zM45 90h10l-5 7zM72 86h8l-4 6z"/></g></svg></div></div>
       <div class="fiesta-in chapter-in">
         <p class="tag tag-pink pop" dir="ltr" data-t="fi_tag">Sabor del Verano!</p>
         <div class="fi-title-wrap">
           <svg class="fi-ring" id="fi-ring" viewBox="0 0 1080 1080" aria-hidden="true"><circle cx="540" cy="540" r="534" fill="none" stroke="#fff" stroke-width="6"/></svg>
           <h2 class="fiesta-title" id="fiesta-title" dir="ltr" data-t="fi_title">¡FIESTA!</h2>
         </div>
-        <p class="lead reveal" data-t="fi_copy">The new Mexican menu at FUEL.</p>
+        <p class="lead reveal" data-t="fi_copy">The new Mexican menu at FUEL. Four new items, on top of everything you already love.</p>
         <ul class="fi-cards" id="fi-cards">
           <li class="fi-card c-pink">
             <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-            <img src="assets/img/food/mexican-burger.webp" alt="Mexican Burger with jalapeños and pico de gallo" width="926" height="1000" loading="lazy">
-            <h3 data-t="fi_1">Mexican Burger</h3><p data-t="fi_1d"></p></li>
+            <img src="assets/img/food/mexican-burger.webp" alt="Mexican Burger with jalapeños and pico de gallo" width="926" height="1000" loading="lazy" decoding="async">
+            <h3 data-t="fi_1">Mexican Burger</h3><p data-t="fi_1d">Beef, cheese, bacon, pico de gallo and jalapeños.</p></li>
           <li class="fi-card c-green">
             <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-            <img src="assets/img/food/mexican-fries.webp" alt="Mexican Loaded Fries with guacamole and jalapeños" width="891" height="1000" loading="lazy">
-            <h3 data-t="fi_2">Mexican Loaded Fries</h3><p data-t="fi_2d"></p></li>
+            <img src="assets/img/food/mexican-fries.webp" alt="Mexican Loaded Fries with guacamole and jalapeños" width="891" height="1000" loading="lazy" decoding="async">
+            <h3 data-t="fi_2">Mexican Loaded Fries</h3><p data-t="fi_2d">Fries loaded Fiesta style, with guacamole and jalapeños.</p></li>
           <li class="fi-card c-orange">
             <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-            <img src="assets/img/food/jalapeno-poppers.webp" alt="Jalapeño Poppers in a FUEL paper bag" width="603" height="700" loading="lazy">
-            <h3 data-t="fi_3">Jalapeño Poppers</h3><p data-t="fi_3d"></p></li>
+            <img src="assets/img/food/jalapeno-poppers.webp" alt="Jalapeño Poppers in a FUEL paper bag" width="603" height="700" loading="lazy" decoding="async">
+            <h3 data-t="fi_3">Jalapeño Poppers</h3><p data-t="fi_3d">Crispy, golden, with a kick.</p></li>
           <li class="fi-card c-teal">
             <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-            <img src="assets/img/food/mexican-refresher.webp" alt="Mexican Refresher with a chamoy and tajín rim" width="603" height="700" loading="lazy">
-            <h3 data-t="fi_4">Mexican Refresher</h3><p data-t="fi_4d"></p></li>
+            <img src="assets/img/food/mexican-refresher.webp" alt="Mexican Refresher with a chamoy and tajín rim" width="603" height="700" loading="lazy" decoding="async">
+            <h3 data-t="fi_4">Mexican Refresher</h3><p data-t="fi_4d">Soda water, chamoy, tajín and mango.</p></li>
         </ul>
         <p class="fi-note reveal" data-t="fi_note">Fiesta prices at the container.</p>
         <a class="btn btn-black" href="https://bitesnbags.com/place/fuel-foodtruck" dir="ltr" data-t="fi_go">¡Vámonos!</a>
@@ -241,22 +241,31 @@
     </section>
 
     <!-- MENU: every price, in mono, like a timing sheet -->
-    <section class="menu" id="menu">
+    <section class="menu" id="menu" tabindex="-1">
       <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 14 L100 2 L100 20.5 Z"/></svg>
       <i class="streak" aria-hidden="true"></i>
       <p class="tag tag-red pop" data-t="menu_tag">Prices in JD</p>
       <h2 class="big chrome split" data-t="menu_title">THE MENU</h2>
-      <div class="menu-grid" id="menu-grid"></div>
+      <div class="menu-grid" id="menu-grid">
+        <article class="mcat"><h3>Burgers<span>JD</span></h3><div class="mrow"><span dir="ltr">Single</span><i></i><b>4.00</b></div><div class="mrow"><span dir="ltr">Double</span><i></i><b>5.50</b></div><div class="mrow"><span dir="ltr">Triple</span><i></i><b>7.00</b></div><div class="mrow"><span dir="ltr">4*4</span><i></i><b>8.50</b></div></article>
+        <article class="mcat"><h3>Truffle Burger<span>JD</span></h3><div class="mrow"><span dir="ltr">Single</span><i></i><b>5.00</b></div><div class="mrow"><span dir="ltr">Double</span><i></i><b>6.50</b></div><div class="mrow"><span dir="ltr">Triple</span><i></i><b>8.00</b></div></article>
+        <article class="mcat"><h3>Combos<span>JD</span></h3><div class="mrow mhead"><span></span><i style="border:0"></i><b>Soft drink</b><b>Shake</b></div><div class="mrow"><span dir="ltr">Single</span><i></i><b>5.25</b><b>7.00</b></div><div class="mrow"><span dir="ltr">Double</span><i></i><b>6.75</b><b>8.50</b></div><div class="mrow"><span dir="ltr">Triple</span><i></i><b>8.00</b><b>10.00</b></div><p class="mnote">With a soft drink, or with a milkshake for +2 JD.</p></article>
+        <article class="mcat"><h3>Sides<span>JD</span></h3><div class="mrow"><span dir="ltr">Caviar Fries</span><i></i><b>5.00</b></div><div class="mrow"><span dir="ltr">Animal Fries</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Skin On Fries</span><i></i><b>2.00</b></div><div class="mrow"><span dir="ltr">Fries</span><i></i><b>1.50</b></div><div class="mrow"><span dir="ltr">Fuel Sauce</span><i></i><b>0.50</b></div></article>
+        <article class="mcat"><h3>Shakes<span>JD</span></h3><div class="mrow"><span dir="ltr">Mango Coco</span><i></i><b>3.75</b></div><div class="mrow"><span dir="ltr">Birthday Shake</span><i></i><b>3.75</b></div><div class="mrow"><span dir="ltr">Strawberry Cream</span><i></i><b>3.75</b></div><p class="mnote">Add whipped cream 0.50</p></article>
+        <article class="mcat"><h3>Refreshers<span>JD</span></h3><div class="mrow"><span dir="ltr">McQueen</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Green Lightning</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Beach Breeze</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Iced Tea</span><i></i><b>3.50</b></div><p class="mnote">Add Red Bull 1.50</p></article>
+        <article class="mcat"><h3>Coffee<span>JD</span></h3><div class="mrow"><span dir="ltr">Salted Caramel Frappe</span><i></i><b>4.00</b></div><div class="mrow"><span dir="ltr">Iced White Mocha</span><i></i><b>4.00</b></div><div class="mrow"><span dir="ltr">Matcha Frappe</span><i></i><b>4.00</b></div><div class="mrow"><span dir="ltr">Iced Spanish Latte</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Hot / Iced Latte</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Matcha Latte</span><i></i><b>3.50</b></div><div class="mrow"><span dir="ltr">Hot / Iced Americano</span><i></i><b>3.00</b></div><div class="mrow"><span dir="ltr">Double Espresso Shot</span><i></i><b>2.50</b></div><p class="mnote">Extra shot 0.50</p></article>
+        <article class="mcat"><h3>Hot chocolate &amp; ice cream<span>JD</span></h3><div class="mrow"><span dir="ltr">S'mores Hot Chocolate</span><i></i><b>4.00</b></div><div class="mrow"><span dir="ltr">Vanilla Salted Caramel Ice Cream</span><i></i><b>3.00</b></div><div class="mrow"><span dir="ltr">Matcha Ice Cream</span><i></i><b>3.00</b></div></article>
+      </div>
       <p class="menu-note reveal" data-t="menu_note">Upgrade any drink to large for only 0.50 JD.</p>
     </section>
 
     <!-- RACE MODE: the loyalty track; the bolt rides the S-curve as you scroll -->
-    <section class="race" id="race">
+    <section class="race" id="race" tabindex="-1">
       <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 14 L100 2 L100 20.5 Z"/></svg>
       <div class="chapter-in">
         <p class="tag tag-black pop" data-t="race_tag">Race Mode</p>
         <h2 class="big white split" data-t="race_title">HOW LOYAL<br>ARE YOU?</h2>
-        <p class="lead reveal" data-t="race_copy">Earn points with every order.</p>
+        <p class="lead reveal" data-t="race_copy">Earn points with every order. Keep the card in your phone wallet and climb the leaderboard. Each month one Top Fueler takes the crown.</p>
         <div class="track" id="track">
           <svg class="track-svg" id="track-svg" aria-hidden="true"><path class="track-base" id="track-base" d=""/><path class="track-fill" id="track-fill" d=""/></svg>
           <div class="gantry" id="gantry" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -277,17 +286,17 @@
     </section>
 
     <!-- VISIT: the container, hours, phone, directions, map -->
-    <section class="visit" id="visit">
+    <section class="visit" id="visit" tabindex="-1">
       <svg class="edge edge-top" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20.5 L0 2 L100 14 L100 20.5 Z"/></svg>
       <i class="streak" aria-hidden="true"></i>
       <figure class="visit-photo" id="visit-photo"><span class="frame">
         <!-- PLACEHOLDER image: cut from FUEL's Instagram -->
-        <img src="assets/img/food/container-hill.webp" alt="The FUEL container on a hill" width="1000" height="788" loading="lazy"></span>
+        <img src="assets/img/food/container-hill.webp" alt="The FUEL container on a hill" width="1000" height="788" loading="lazy" decoding="async"></span>
       </figure>
       <div class="visit-copy">
         <p class="tag tag-red pop" data-t="visit_tag">Pull in</p>
         <h2 class="big chrome split" data-t="visit_title">COME FILL<br>UP</h2>
-        <p class="reveal" data-t="visit_copy">Find the FUEL container in Amman.</p>
+        <p class="reveal" data-t="visit_copy">Find the FUEL container in Amman. Every day from 11 AM.</p>
         <p class="open" id="open"><i></i><span></span></p>
         <dl class="visit-list" id="visit-list">
           <div><dt data-t="v_hours">Hours</dt><dd><span data-t="v_week">Sun–Thu 11 AM – 1 AM</span><br><span data-t="v_wkend">Fri–Sat 11 AM – 2 AM</span></dd></div>
@@ -317,11 +326,11 @@
         <a href="#visit" data-t="nav_visit">Visit</a>
         <a href="https://www.instagram.com/fuel_foodtruck/">Instagram</a>
       </nav>
-      <p class="foot-small">© <span id="year">2026</span> FUEL · <span data-t="foot_small">Concept website preview</span> · <span data-t="photo_note">Photos from @fuel_foodtruck</span></p>
+      <p class="foot-small">© <span id="year">2026</span> FUEL · <span data-t="foot_small">Concept website preview</span> · <span data-t="photo_note">Photos from</span> <a href="https://www.instagram.com/fuel_foodtruck/" dir="ltr">@fuel_foodtruck</a></p>
     </div>
     <i class="chequer foot-chequer" id="foot-chequer" aria-hidden="true"></i>
     <div class="foot-rule"><i id="foot-rule"></i></div>
-    <p class="foot-line" data-t="foot_line">Eat. Drive. Repeat!</p>
+    <p class="foot-line" data-t="foot_line">Eat. Drive. Repeat! · Burgers · Shakes · Coffee · Amman</p>
     <div class="foot-stage" id="foot-stage">
       <svg class="foot-word" id="foot-word" role="img" aria-label="fuel"><use href="#logo"/></svg>
     </div>

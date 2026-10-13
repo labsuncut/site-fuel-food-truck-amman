@@ -9,7 +9,7 @@
   const T = TEXT[lang];
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const isPhone = () => window.matchMedia('(max-width: 767px)').matches;
+  const isPhone = () => !window.matchMedia('(min-width: 768px)').matches;   // complements the CSS 767px block at every width
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = !!(navigator.connection && navigator.connection.saveData);
   const wideExists = false;                 // set to true once assets/video/hero-wide.mp4 is in the repo
@@ -27,21 +27,26 @@
     const v = T[el.dataset.words] || ''; el.innerHTML = v.replace(/\n/g, ' ').split(/\s+/).map((w) => `<span class="w">${esc(w)}</span>`).join('');
   });
   $('#year').textContent = new Date().getFullYear();
-  $('#lang').addEventListener('click', () => {
+  const langBtn = $('#lang');
+  langBtn.lang = lang === 'ar' ? 'en' : 'ar';
+  langBtn.setAttribute('aria-label', T.lang_switch_label);
+  $('#overlay').setAttribute('aria-label', T.menu_btn);
+  langBtn.addEventListener('click', () => {
     try { localStorage.setItem('fuel-lang', lang === 'ar' ? 'en' : 'ar'); sessionStorage.setItem('fuel-seen', '1'); } catch (e) {}
     location.reload();
   });
 
   // ---------- The four top sellers (facts from content.js; images are FUEL's own, cut out) ----------
-  const ITEMS = [
-    { src: 'assets/img/cut/double-classic.webp', w: 827, h: 761, name: ['DOUBLE', 'CLASSIC'], key: 't_classic', price: '5.50', s: 1 },
-    { src: 'assets/img/cut/animal-fries.webp', w: 646, h: 723, name: ['ANIMAL', 'FRIES'], key: 't_fries', price: '3.50', s: -1 },
-    { src: 'assets/img/cut/mango-coco.webp', w: 568, h: 900, name: ['MANGO', 'COCO'], key: 't_mango', price: '3.75', s: 0 },
-    { src: 'assets/img/cut/double-truffle.webp', w: 586, h: 422, name: ['DOUBLE', 'TRUFFLE'], key: 't_truffle', price: '6.50', s: 1 },
-  ];
+  const ITEMS = [ // visuals here; names and prices come from TOP in content.js
+    { src: 'assets/img/cut/double-classic.webp', w: 827, h: 761, name: ['DOUBLE', 'CLASSIC'], s: 1 },
+    { src: 'assets/img/cut/animal-fries.webp', w: 646, h: 723, name: ['ANIMAL', 'FRIES'], s: -1 },
+    { src: 'assets/img/cut/mango-coco.webp', w: 568, h: 900, name: ['MANGO', 'COCO'], s: 0 },
+    { src: 'assets/img/cut/double-truffle.webp', w: 586, h: 422, name: ['DOUBLE', 'TRUFFLE'], s: 1 },
+  ].map((it, k) => ({ ...it, key: TOP[k].key, price: TOP[k].price }));
+  $$('.fly-list em').forEach((em, k) => { em.firstChild.nodeValue = TOP[k].price + ' '; });
 
   // ---------- Menu: built from MENU in content.js ----------
-  $('#menu-grid').innerHTML = MENU.map((cat) => {
+  if (lang !== 'en' || !$('#menu-grid').children.length) $('#menu-grid').innerHTML = MENU.map((cat) => {
     const combo = cat.rows[0].length === 3;
     const head = combo ? `<div class="mrow mhead"><span></span><i style="border:0"></i><b>${esc(T.combo_soft)}</b><b>${esc(T.combo_shake)}</b></div>` : '';
     const rows = cat.rows.map((r) => `<div class="mrow"><span dir="ltr">${esc(r[0])}</span><i></i><b>${r[1]}</b>${combo ? `<b>${r[2]}</b>` : ''}</div>`).join('');
@@ -66,9 +71,12 @@
   // ---------- Menu overlay ----------
   const overlay = $('#overlay'), openBtn = $('#menu-open');
   const circleAt = rtl ? '60px 34px' : 'calc(100% - 60px) 34px';
-  function setMenu(show) {
+  const behind = () => $$('#main, #header, #footer, #mbar');
+  function setMenu(show, refocus = true) {
     openBtn.setAttribute('aria-expanded', String(show));
-    if (!window.gsap) { overlay.hidden = !show; return; }
+    behind().forEach((el) => { el.inert = show; });
+    if (show) setTimeout(() => $('#menu-close').focus(), 50); else if (refocus) openBtn.focus();
+    if (calm || !window.gsap) { overlay.hidden = !show; if (lenis) (show ? lenis.stop() : lenis.start()); return; }
     if (show) {
       overlay.hidden = false;
       gsap.fromTo(overlay, { clipPath: `circle(0% at ${circleAt})` }, { clipPath: `circle(150% at ${circleAt})`, duration: .8, ease: 'power3.inOut' });
@@ -82,15 +90,19 @@
   openBtn.addEventListener('click', () => setMenu(true));
   $('#menu-close').addEventListener('click', () => setMenu(false));
   $$('.overlay-nav a').forEach((a) => a.addEventListener('click', (e) => {
-    e.preventDefault(); setMenu(false); const t = $(a.getAttribute('href'));
-    setTimeout(() => (lenis ? lenis.scrollTo(t, { offset: 0, duration: 1.2, easing: (x) => 1 - Math.pow(2, -10 * x) }) : t.scrollIntoView()), 350);
+    e.preventDefault(); setMenu(false, false); const t = $(a.getAttribute('href'));
+    setTimeout(() => { if (lenis) lenis.scrollTo(t, { offset: 0, duration: 1.2, easing: (x) => 1 - Math.pow(2, -10 * x) }); else t.scrollIntoView(); t.focus({ preventScroll: true }); }, 350);
   }));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) setMenu(false); });
+  document.addEventListener('keydown', (e) => {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') setMenu(false);
+    else if (['PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', 'Home', 'End', ' '].includes(e.key)) e.preventDefault(); // the page behind stays put
+  });
 
   // ---------- Papel picado flags for Fiesta (drawn here, so they also show without motion) ----------
   const FLAG_COLORS = ['#ff2e88', '#18b04c', '#ff6a1a', '#00b3c7', '#7b3fe4', '#ed1c24'];
   const picado = $('#picado');
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < (picado.children.length > 1 ? 0 : 14); i++) {
     const f = document.createElement('div'); f.className = 'flag';
     f.innerHTML = `<svg viewBox="0 0 100 112"><path fill="${FLAG_COLORS[i % 6]}" d="M0 0H100V100L90 110 80 100 70 110 60 100 50 110 40 100 30 110 20 100 10 110 0 100Z"/>`
       + '<g fill="#ffc21a"><circle cx="50" cy="52" r="13"/><path d="M50 22l7 9-7 9-7-9zM50 64l7 9-7 9-7-9zM20 45l8 7-8 7-8-7zM80 45l8 7-8 7-8-7z"/>'
@@ -99,7 +111,7 @@
   }
 
   // ---------- Fuel gauge for the Passion Tank (E on the start side, F on the end side) ----------
-  (function gauge() {
+  if (rtl || !$('#gauge').children.length) (function gauge() {
     const R = 80, cx = 100, cy = 100, pt = (deg, r) => { const a = (deg - 90) * Math.PI / 180; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
     const [ax, ay] = pt(-110, R), [bx, by] = pt(110, R), [fx, fy] = pt(77, R);
     let ticks = '';
@@ -134,6 +146,34 @@
   for (let i = 0; i < (isPhone() ? 2 : 6); i++) $('#streaks').appendChild(document.createElement('i'));
   [38, 64].forEach((top) => { const s = document.createElement('i'); s.className = 'streak sig'; s.style.top = top + 'vh'; s.style.zIndex = 8; stage.appendChild(s); });
 
+  // ---------- Race track geometry: an S-curve through the five checkpoint dots (used live and in static mode) ----------
+  function trackGeometry() {
+    const track = $('#track'), fillP = $('#track-fill'), box = track.getBoundingClientRect();
+    const pts = $$('.check .dot', track).map((d) => { const r = d.getBoundingClientRect(); return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 }; });
+    const vertical = Math.abs(pts[4].y - pts[0].y) > Math.abs(pts[4].x - pts[0].x), amp = vertical ? 18 : 22;
+    $('#track-svg').setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+    let d = `M${pts[0].x} ${pts[0].y}`; const cum = [0];
+    for (let i = 1; i < 5; i++) {
+      const a = pts[i - 1], b = pts[i], sg = i % 2 ? 1 : -1;
+      d += vertical ? ` C${a.x + amp * sg} ${a.y + (b.y - a.y) / 3},${b.x + amp * sg} ${a.y + 2 * (b.y - a.y) / 3},${b.x} ${b.y}`
+        : ` C${a.x + (b.x - a.x) / 3} ${a.y + amp * sg},${a.x + 2 * (b.x - a.x) / 3} ${b.y + amp * sg},${b.x} ${b.y}`;
+      fillP.setAttribute('d', d); cum.push(fillP.getTotalLength());
+    }
+    $('#track-base').setAttribute('d', d);
+    return { pts, vertical, cum, len: cum[4] };
+  }
+  // Static mode (reduced motion, or the motion library missing): the track fully drawn, every checkpoint ticked
+  function staticTrack() {
+    trackGeometry();
+    $$('.check').forEach((c) => c.classList.add('is-on'));
+  }
+  function goStatic() {
+    html.classList.remove('fly-live');
+    const l = $('#loader'); if (l) l.remove();
+    staticTrack();
+    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(staticTrack, 150); });
+  }
+
   // ---------- Hero film: one file, picked here; the still underneath is the permanent backstop ----------
   const video = $('#hero-video');
   let heroVisible = true;
@@ -153,14 +193,15 @@
   }
   setupVideo();
 
-  if (calm || !window.gsap) { const l = $('#loader'); if (l) l.remove(); return; }
+  if (calm || !(window.gsap && window.ScrollTrigger && window.SplitText && window.Lenis)) { goStatic(); return; }
 
   html.classList.add('fly-live');
   gsap.registerPlugin(ScrollTrigger, SplitText);
   ScrollTrigger.config({ ignoreMobileResize: true });
   document.addEventListener('visibilitychange', () => (document.hidden ? gsap.globalTimeline.pause() : gsap.globalTimeline.play()));
   // Wait for the fonts so headlines split on the right line breaks (but never more than 2.5 s).
-  Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise((r) => setTimeout(r, 2500))]).then(start);
+  Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise((r) => setTimeout(r, 2500))]).then(start)
+    .catch((err) => { console.error(err); goStatic(); });
 
   function start() {
 
@@ -170,11 +211,12 @@
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
   $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
-    const t = a.getAttribute('href'); if (t.length < 2 || a.closest('.overlay-nav')) return;
+    const t = a.getAttribute('href'); if (t.length < 2 || a.closest('.overlay-nav') || a.classList.contains('skip')) return;
     e.preventDefault(); lenis.scrollTo(t === '#top' ? 0 : t);
+    const el = $(t); if (el) el.focus({ preventScroll: true });
   }));
   const header = $('#header');
-  lenis.on('scroll', ({ direction, scroll }) => header.classList.toggle('is-hidden', direction === 1 && scroll > 200));
+  lenis.on('scroll', ({ direction, scroll }) => { if (header.contains(document.activeElement)) return; header.classList.toggle('is-hidden', direction === 1 && scroll > 200); });
 
   // ---------- Split headlines (chars in English, words in Arabic so letters stay joined) ----------
   const splits = $$('.split').map((el) => SplitText.create(el, { type: lang === 'ar' ? 'lines,words' : 'lines,words,chars', linesClass: 'line', wordsClass: 'word', charsClass: 'char' }));
@@ -223,7 +265,7 @@
     tl.to($$('.pod i', loader), { ...OFF, duration: .05 }, lightsOut);
     tl.call(() => { text.textContent = T.load_done; barWrap.classList.add('is-flash'); $('#loader-logo').classList.add('is-go'); setTimeout(() => barWrap.classList.remove('is-flash'), 120); }, null, lightsOut);
     tl.to('#loader-logo', { scale: 1.12, duration: .12, ease: 'power2.out', yoyo: true, repeat: 1 }, lightsOut);
-    tl.to([text, barWrap], { y: 40, opacity: 0, duration: .3, ease: 'power2.in', onComplete: () => lenis.scrollTo(0, { immediate: true }) }, 2.70);
+    tl.to([text, barWrap], { y: 40, opacity: 0, duration: .3, ease: 'power2.in', onComplete: () => lenis.scrollTo(0, { immediate: true, force: true }) }, 2.70);
     // The curtains wait (at most 200 ms) for the film's first frames
     tl.addPause(out, () => {
       let went = false; const go = () => { if (went) return; went = true; gsap.delayedCall(.01, () => tl.play()); };
@@ -275,9 +317,9 @@
 
   // ---------- Breakpoint-dependent motion (rebuilt if the window crosses 768 px) ----------
   const mm = gsap.matchMedia();
-  mm.add({ desk: '(min-width: 768px)', phone: '(max-width: 767px)' }, (ctx) => {
+  mm.add({ desk: '(min-width: 768px)', phone: 'not all and (min-width: 768px)' }, (ctx) => {
     const phone = !!ctx.conditions.phone;
-    buildFly(phone);
+    const cleanupFly = buildFly(phone);
     // Slanted edges stretch on scroll (CRAV settings)
     $$('.edge').forEach((svg) => gsap.to(svg, { scaleY: phone ? 1.2 : 1.5, scrollTrigger: { trigger: svg.parentElement, start: phone ? 'top 90%' : 'top 80%', end: phone ? 'top 15%' : 'top 20%', scrub: phone ? .5 : 1 } }));
     // The coloured chapters sink a little as they leave
@@ -285,12 +327,13 @@
     buildTank(phone);
     buildFull(phone);
     // Visit cards drift against the copy
-    gsap.fromTo('#visit-photo', { y: () => -innerHeight * (phone ? .02 : .04) }, { y: () => innerHeight * (phone ? .02 : .04), ease: 'none', scrollTrigger: { trigger: '.visit', start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.fromTo('#visit-map', { y: () => innerHeight * (phone ? .02 : .04) }, { y: () => -innerHeight * (phone ? .02 : .04), ease: 'none', scrollTrigger: { trigger: '.visit', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.fromTo('#visit-photo', { yPercent: phone ? -3 : -6 }, { yPercent: phone ? 3 : 6, ease: 'none', scrollTrigger: { trigger: '.visit', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.fromTo('#visit-map', { yPercent: phone ? 3 : 6 }, { yPercent: phone ? -3 : -6, ease: 'none', scrollTrigger: { trigger: '.visit', start: 'top bottom', end: 'bottom top', scrub: true } });
     // The wordmark rises over the crest as the page ends
     gsap.fromTo('#foot-word', { clipPath: 'inset(100% 0 0 0)', yPercent: 30 }, { clipPath: 'inset(0% 0 0 0)', yPercent: 0, ease: 'none', scrollTrigger: { trigger: '#foot-stage', start: 'top bottom', end: 'bottom bottom', scrub: true } });
     // Lap progress line
     gsap.fromTo('#lap', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: true } });
+    return cleanupFly;
   });
 
   // ---------- THE FLYTHROUGH: one pinned stage, 100 units of scroll ----------
@@ -314,7 +357,9 @@
       slots = $$('.slot').map((el) => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2 - (sr.left + sr.width / 2), y: r.top + r.height / 2 - (sr.top + sr.height / 2), s: r.width / iw }; });
     };
     const slot = (k, p) => { if (!slots) measure(); return slots[k][p]; };
-    ScrollTrigger.addEventListener('refreshInit', () => { slots = null; });
+    const onInit = () => { slots = null; };
+    ScrollTrigger.addEventListener('refreshInit', onInit);
+    const off = [() => ScrollTrigger.removeEventListener('refreshInit', onInit)];
 
     const SCHED = [ // approach start, hold start, hold end (exit start), exit end; name in/out; label in/out
       { a: 6, h: 18, e: 28, x: 36, nIn: 8, nOut: 27, lIn: 16, lOut: 27, tick: 18 },
@@ -395,24 +440,26 @@
     tl.fromTo(dim, { opacity: 0 }, { opacity: .78, duration: 4 }, 56).fromTo(dim, { opacity: .78 }, { opacity: 0, duration: 4 }, 76);
     tl.fromTo(neonDraw, { opacity: 0 }, { opacity: 1, duration: .5 }, 58);
     tl.fromTo(neonPath, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 5, ease: 'power2.inOut' }, 58);
-    tl.fromTo([neonDraw, neonGlow], { scale: 1 }, { scale: 1.15, duration: 3 }, 76);
+    tl.fromTo(neonDraw, { scale: 1 }, { scale: 1.15, duration: 3 }, 76);
     tl.fromTo(neonDraw, { opacity: 1 }, { opacity: 0, duration: 3 }, 76).fromTo(neonGlow, { opacity: .6 }, { opacity: 0, duration: 3 }, 76);
     tl.fromTo(tag, { opacity: 1 }, { opacity: 0, duration: 3 }, 76);
     const sig = $$('.streak.sig', stage);
+    let tagPop = null, glowFlick = null;
+    tl.call(() => { if (tagPop) tagPop.kill(); if (glowFlick) glowFlick.kill(); }, null, 75.9);
     tl.call(() => {
       if (!fwdOnly(tl.scrollTrigger)) { gsap.set(tag, { opacity: 0 }); return; }
-      gsap.fromTo(tag, { scale: 1.6, rotation: -14, opacity: 0 }, { scale: 1, rotation: -6, opacity: 1, duration: .45, ease: 'back.out(3)' });
+      tagPop = gsap.fromTo(tag, { scale: 1.6, rotation: -14, opacity: 0 }, { scale: 1, rotation: -6, opacity: 1, duration: .45, ease: 'back.out(3)' });
       sig.forEach((el, i) => gsap.timeline({ delay: i * .4 })
         .set(el, { transformOrigin: originS }).fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: .35, ease: 'power3.in' })
         .set(el, { transformOrigin: originE }).to(el, { scaleX: 0, duration: .4, ease: 'power3.out' }));
     }, null, 61);
     tl.call(() => {
       if (!fwdOnly(tl.scrollTrigger)) { gsap.set(neonGlow, { opacity: 0 }); return; }
-      gsap.fromTo(neonGlow, { opacity: 0 }, { keyframes: { opacity: [0, .25, 1, .3, 1, .6], easeEach: 'none' }, duration: .8 });
+      glowFlick = gsap.fromTo(neonGlow, { opacity: 0 }, { keyframes: { opacity: [0, .25, 1, .3, 1, .6], easeEach: 'none' }, duration: .8 });
     }, null, 63);
 
     // The lineup: copy rises, the list fades in under the parked items
-    tl.fromTo('#fly-lineup', { opacity: 0 }, { opacity: 1, duration: 4 }, 96);
+    tl.fromTo('#fly-lineup', { autoAlpha: 0 }, { autoAlpha: 1, duration: 4 }, 96);
     tl.fromTo($$('.lineup-script, .fly-lineup-h, .fly-list b, .fly-list em, .fly-lineup .lead, .fly-lineup .btn'), { yPercent: 10 }, { yPercent: 0, duration: 4 }, 96);
 
     // The heading climbs out of the darkening hero before the pin
@@ -422,19 +469,23 @@
     if (!phone && window.matchMedia('(hover: hover)').matches) {
       const qx = tilts.map((t) => gsap.quickTo(t, 'rotationX', { duration: .6, ease: 'power3.out' }));
       const qy = tilts.map((t) => gsap.quickTo(t, 'rotationY', { duration: .6, ease: 'power3.out' }));
-      stage.addEventListener('mousemove', (e) => {
+      const onMove = (e) => {
         if (holdK < 0) return;
         const r = stage.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
         qy[holdK](nx * 12); qx[holdK](-ny * 8);
-      });
+      };
+      stage.addEventListener('mousemove', onMove);
+      off.push(() => stage.removeEventListener('mousemove', onMove));
       $$('.fly-list li').forEach((li, k) => {
-        li.addEventListener('mouseenter', () => { if (tl.progress() > .97) gsap.to(tilts[k], { y: -8, duration: .4, ease: 'power2.out' }); gsap.to($('.reflect', tilts[k]), { opacity: .4, duration: .4 }); });
-        li.addEventListener('mouseleave', () => { gsap.to(tilts[k], { y: 0, duration: .4, ease: 'power2.out' }); gsap.to($('.reflect', tilts[k]), { opacity: .28, duration: .4 }); });
+        const enter = () => { if (tl.progress() > .97) gsap.to(tilts[k], { y: -8, duration: .4, ease: 'power2.out' }); gsap.to($('.reflect', tilts[k]), { opacity: .4, duration: .4 }); };
+        const leave = () => { gsap.to(tilts[k], { y: 0, duration: .4, ease: 'power2.out' }); gsap.to($('.reflect', tilts[k]), { opacity: .28, duration: .4 }); };
+        li.addEventListener('mouseenter', enter); li.addEventListener('mouseleave', leave);
+        off.push(() => { li.removeEventListener('mouseenter', enter); li.removeEventListener('mouseleave', leave); });
       });
     }
     // Re-measure once the cut-outs have decoded
     Promise.all($$('.fly-item img, .slot img').map((i) => (i.decode ? i.decode().catch(() => {}) : null))).then(() => ScrollTrigger.refresh());
-    return tl;
+    return () => off.forEach((f) => f());
   }
 
   // ---------- Passion Tank: the cup fills, the needle swings to F, the plates slide in ----------
@@ -502,7 +553,7 @@
     gsap.to('#picado-line', { scaleX: 1, duration: .5, ease: 'power3.out', delay: .2 });
     gsap.to(flags, { rotationX: 0, duration: .8, stagger: .04, ease: 'back.out(1.8)', delay: .3, onComplete: () => {
       flags.forEach((f, i) => sway.to(f, { rotate: i % 2 ? 4 : -4, duration: gsap.utils.random(1.4, 2.2), ease: 'sine.inOut', yoyo: true, repeat: -1 }, i * .08));
-      sway.play();
+      sway.paused(!fiestaST.isActive);
     } });
     const host = $('#fiesta'), W = host.clientWidth, top = $('#fiesta-title').getBoundingClientRect().top - host.getBoundingClientRect().top + 60;
     const colors = ['#ff2e88', '#18b04c', '#ff6a1a', '#00b3c7', '#7b3fe4', '#ed1c24', '#0b0b0c'];
@@ -516,7 +567,7 @@
         .to(c, { y: `+=${gsap.utils.random(300, 600)}`, rotation: '+=360', opacity: 0, duration: gsap.utils.random(1.4, 2.4), ease: 'power1.in' });
     }
   } });
-  ScrollTrigger.create({ trigger: '#fiesta', start: 'top bottom', end: 'bottom top', onToggle: (self) => sway.paused(!self.isActive) });
+  const fiestaST = ScrollTrigger.create({ trigger: '#fiesta', start: 'top bottom', end: 'bottom top', onToggle: (self) => sway.paused(!self.isActive) });
   gsap.set('.fi-card h3', { scale: 1.4, opacity: 0 });
   gsap.from('.fi-card', { y: 140, rotate: (i) => [-14, 12, -10, 16][i], opacity: 0, duration: .9, stagger: .1, ease: 'back.out(1.5)', scrollTrigger: { trigger: '#fi-cards', start: 'top 88%', once: true },
     onComplete: () => gsap.to('.fi-card h3', { scale: 1, opacity: 1, duration: .4, stagger: .1, ease: 'back.out(3)' }) });
@@ -537,29 +588,18 @@
   });
 
   // ---------- Race Mode: an S-curve through the checkpoints; the bolt rides it, pods flip as it passes ----------
-  const track = $('#track'), svg = $('#track-svg'), base = $('#track-base'), fillP = $('#track-fill'), bolt = $('#track-bolt'), gantry = $('#gantry');
+  const track = $('#track'), fillP = $('#track-fill'), bolt = $('#track-bolt'), gantry = $('#gantry');
   const checks = $$('.check', track), trail = $$('.trail', track);
   const tx = trail.map((t, i) => gsap.quickTo(t, 'x', { duration: .15 + .1 * i, ease: 'power2.out' }));
   const ty = trail.map((t, i) => gsap.quickTo(t, 'y', { duration: .15 + .1 * i, ease: 'power2.out' }));
   let geo = null, finished = false, pinged = [];
   const prog = { v: 0 };
   function layoutTrack() {
-    const box = track.getBoundingClientRect();
-    const pts = checks.map((c) => { const r = $('.dot', c).getBoundingClientRect(); return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 }; });
-    const vertical = Math.abs(pts[4].y - pts[0].y) > Math.abs(pts[4].x - pts[0].x), amp = vertical ? 18 : 22;
-    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
-    let d = `M${pts[0].x} ${pts[0].y}`; const cum = [0];
-    for (let i = 1; i < 5; i++) {
-      const a = pts[i - 1], b = pts[i], sg = i % 2 ? 1 : -1;
-      d += vertical ? ` C${a.x + amp * sg} ${a.y + (b.y - a.y) / 3},${b.x + amp * sg} ${a.y + 2 * (b.y - a.y) / 3},${b.x} ${b.y}`
-        : ` C${a.x + (b.x - a.x) / 3} ${a.y + amp * sg},${a.x + 2 * (b.x - a.x) / 3} ${b.y + amp * sg},${b.x} ${b.y}`;
-      fillP.setAttribute('d', d); cum.push(fillP.getTotalLength());
-    }
-    base.setAttribute('d', d);
-    const len = cum[4];
+    const { pts, vertical, cum, len } = trackGeometry();
     fillP.style.strokeDasharray = len;
     geo = { len, vertical, at: cum.map((l) => l / len) };
-    gsap.set(gantry, vertical ? { x: pts[0].x + 34, y: pts[0].y - 5 } : { x: pts[0].x - 32, y: pts[0].y - 40 });
+    const gw = gantry.offsetWidth || 74;
+    gsap.set(gantry, vertical ? { x: pts[0].x + (rtl ? -34 - gw : 34), y: pts[0].y - 5 } : { x: pts[0].x + (rtl ? 32 : -32), y: pts[0].y - 40 });
     draw(prog.v);
   }
   function draw(v) {
@@ -617,7 +657,7 @@
 
   const fstage = $('#foot-stage');
   const n = isPhone() ? 5 : 8, R = gsap.utils.random;
-  const toss = [], jug = gsap.timeline();
+  const toss = [], jug = gsap.timeline({ autoRemoveChildren: true });
   for (let i = 0; i < n; i++) {
     const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     s.setAttribute('viewBox', '0 0 60 100'); s.setAttribute('class', 'toss' + (i % 3 === 0 ? ' front' : ''));
