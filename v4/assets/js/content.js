@@ -77,6 +77,7 @@ const TEXT = {
     open_now: 'Open now', closed_now: 'Closed now', closes: 'closes at', opens: 'opens at 11 AM',
 
     foot_line: 'Eat. Drive. Repeat! · Burgers · Shakes · Coffee · Amman', foot_small: 'Concept website preview',
+    scroll_cue: 'Scroll', fly_marker: '02 / Top sellers', hud_of: '/ 04', lineup_h: 'The top sellers',
   },
   ar: {
     skip: 'تخطَّ إلى المحتوى', lang_switch: 'EN', menu_btn: 'القائمة', close_btn: 'إغلاق',
@@ -129,5 +130,6 @@ const TEXT = {
     open_now: 'مفتوح الآن', closed_now: 'مسكّر الآن', closes: 'بيسكّر الساعة', opens: 'بيفتح الساعة 11 الصبح',
 
     foot_line: 'كُل. سوق. وعيد! · برغر · ميلك شيك · قهوة · عمّان', foot_small: 'نسخة تجريبية للموقع',
+    scroll_cue: 'اسحب', fly_marker: '02 / الأكثر مبيعاً', hud_of: '/ 04', lineup_h: 'الأكثر مبيعاً',
   },
 };
